@@ -37,7 +37,7 @@ explained in a separated file.
 
 Important notes:
 
--   In the documentation there could be some misunderstandings due to the naming
+-  In the documentation there could be some misunderstandings due to the naming
     of the hardware devices and software. Mainly when using the abbreviations
     EUI and HHD.
 
@@ -70,7 +70,7 @@ Interface) and the HHD (Handheld Device) labels. It contains important code that
 makes the system work properly, as well as allowing advanced users to adjust the
 system or execute maintenance operations.
 
-![Diagram Description automatically generated](media/350f30df820b4ef01f38b7cadcba9985.png)
+![Diagram Description automatically generated](../Resources/350f30df820b4ef01f38b7cadcba9985.png)
 
 Figure 1. Communications structure between the different components of the Main
 Control System (MCS)
@@ -81,7 +81,7 @@ elements explained. Al the components inside the HMI Components box are coded in
 LabVIEW and compiled together as the EUI, for both the HHD and the MCC, with
 some variations as the screen size is different for each case.
 
-![Diagram Description automatically generated](media/3d62584b986c8ac035e591e474694ccc.png)
+![Diagram Description automatically generated](../Resources/3d62584b986c8ac035e591e474694ccc.png)
 
 Figure 2. Software structure, with detail in the HMI components
 
