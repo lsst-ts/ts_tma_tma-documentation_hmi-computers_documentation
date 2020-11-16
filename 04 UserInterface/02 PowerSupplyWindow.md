@@ -1,12 +1,12 @@
-## Power Supply Window
+### Power Supply Window
 
 This window manages the power supply of main axes.
 
-### CMDs
+#### CMDs
 
 This window sends two commands:
 
-#### Power
+##### Power
 
 This command is used to power on/off the subsystem.
 
@@ -18,7 +18,7 @@ This command is used to power on/off the subsystem.
 
   - Boolean: Command to power on (1) or power off (0).
 
-#### Reset Alarm
+##### Reset Alarm
 
 This command is used to reset subsystem.
 
@@ -26,7 +26,7 @@ This command is used to reset subsystem.
 
 - Command number: 602
 
-### Front Panel
+#### Front Panel
 
 Following the generic window layout, the front panel is divided into two main
 sections: monitoring and control sections. The monitoring area will show the
@@ -37,7 +37,7 @@ the subsystem.
 
 ![Front Panel of the Power Supply_EUI.vi\label{figureonehundredeighty-fiveb100c545173fdabc8d44b5e86156ebfe}](../Resources/figures/b100c545173fdabc8d44b5e86156ebfe.png)
 
-#### Monitoring
+##### Monitoring
 
 Within this part, all the indicators shown in Figure \ref{figureonehundredeighty-fived56fcea25c158a2e8dcc9d06ec6d4c8d} are described.
 
@@ -62,7 +62,7 @@ Within this part, all the indicators shown in Figure \ref{figureonehundredeighty
 
   - Update graph: to continue the graph update.
 
-#### Control
+##### Control
 
 The control part is made up by three buttons:
 
@@ -75,7 +75,7 @@ The control part is made up by three buttons:
 - Reset button. Asks the subsystem to reset. When this button is pressed, the
     “Reset Alarm button” event is launched.
 
-### Connector pane
+#### Connector pane
 
 The required inputs for the VI are the following:
 
@@ -102,13 +102,13 @@ The required inputs for the VI are the following:
         has changed from the main to the actual window. Used at the
         GetHMIMain2WindowEventRef.vi within LoopInitializationAction.vi.
 
-### Block Diagram
+#### Block Diagram
 
 The block diagram is divided in three main areas: the init actions, the three
 loops (the consumer loop, the main event loop and the updating graph loop) and
 the exit actions.
 
-#### Init Actions
+##### Init Actions
 
 ![Block diagram of the VI.\label{figureonehundredeighty-six4a6ba29f15456f4301c6bd4ddfb5eaf4}](../Resources/figures/4a6ba29f15456f4301c6bd4ddfb5eaf4.png)
 
@@ -124,7 +124,7 @@ Within the initialization:
 
 ![Init part of the block diagram\label{figureonehundredeighty-seven5fead12919308a862083dbe0d8ed60fa}](../Resources/figures/5fead12919308a862083dbe0d8ed60fa.png)
 
-##### Loop Initialization Actions
+###### Loop Initialization Actions
 
 This VI does the following, using InitGeneralHMIRefs.vi:
 
@@ -167,7 +167,7 @@ This VI does the following, using InitGeneralHMIRefs.vi:
 
 ![LoopInitializationActions.vi\label{figureonehundredeighty-eight838e90d9f56cdf264d3332c91c53bb96}](../Resources/figures/838e90d9f56cdf264d3332c91c53bb96.png)
 
-#### Exit Actions
+##### Exit Actions
 
 At the exit part, the errors from different loops are appended. In the
 HMIExitActions VI following actions are executed:
@@ -183,14 +183,14 @@ HMIExitActions VI following actions are executed:
 
 ![HMIExitActions.vi\label{figureonehundredninety63e5cd1c918bdedc5ec74ce777b52bec}](../Resources/figures/63e5cd1c918bdedc5ec74ce777b52bec.png)
 
-#### Loops
+##### Loops
 
 There are three loops, the Main Event loop, the consumer loop and the update
 graph loop. The communication between them is reviewed in the following figure:
 
 ![Window loop relation\label{figureonehundredeighty-fived56fcea25c158a2e8dcc9d06ec6d4c8d}](../Resources/figures/d56fcea25c158a2e8dcc9d06ec6d4c8d.png)
 
-##### Main event loop
+###### Main event loop
 
 This loop responds to the events received from: the user actions in this window,
 the error event from secondary loops, the events from Main.vi and Menu.vi and
@@ -198,19 +198,19 @@ the events from the PXI.
 
 All the events are described in the next section.
 
-###### Freeze Graph
+####### Freeze Graph
 
 Stop the graph update.
 
 ![Main Loop's events: Freeze graph user event.\label{figureonehundredninety5de5bcb6d980099bb1c31a56327ea24a}](../Resources/figures/5de5bcb6d980099bb1c31a56327ea24a.png)
 
-###### Update graph
+####### Update graph
 
 Start the graph update.
 
 ![Main Loop's events: Update graph user event.\label{figureonehundredninety-onef56ade8dbe74c456b45c80e2425a7f3c}](../Resources/figures/f56ade8dbe74c456b45c80e2425a7f3c.png)
 
-###### Stop panel
+####### Stop panel
 
 This event stops the VI. StopVISequenceEnqueue VI enqueues all the steps needed
 to stop the window.
@@ -223,13 +223,13 @@ The sequence steps are:
 
 ![Main Loop's events: Stop panel user event.\label{figureonehundredninety-two1c0d297b7cec3cc28e585a16cdaf280f}](../Resources/figures/1c0d297b7cec3cc28e585a16cdaf280f.png)
 
-###### Timeout event
+####### Timeout event
 
 Updates the data for the monitoring area unless the graph.
 
 ![Main Loop's events: Timeout event.\label{figureonehundredninety-three0c3a4ed4187f18b812cb6f2ccca8e4d5}](../Resources/figures/0c3a4ed4187f18b812cb6f2ccca8e4d5.png)
 
-###### Ack event out
+####### Ack event out
 
 This is executed when an ack event is received from the PXI. The next sequence
 step, Wait For Done, is enqueued to the Consumer Loop queue at the opposite end,
@@ -238,7 +238,7 @@ ack state of the consumer loop.
 
 ![Main Loop's events: Ack event out user event.\label{figureonehundredninety-four1bab211e087c9c93a84196c0202db645}](../Resources/figures/1bab211e087c9c93a84196c0202db645.png)
 
-###### Done event out
+####### Done event out
 
 This is executed when a done event is received from the PXI. A true constant is
 enqueued at the synchronization queue to exit the wait done case at the consumer
@@ -246,13 +246,13 @@ loop.
 
 ![Main Loop's events: Done event.\label{figureonehundredninety-fivec6b6a4387fbd346ab9621e1d8445df99}](../Resources/figures/c6b6a4387fbd346ab9621e1d8445df99.png)
 
-###### Consumer loop error event out
+####### Consumer loop error event out
 
 It puts an error coming from other loops to the error line.
 
 ![Main Loop's events: Consumer loop error event.\label{figureonehundredninety-six2c3a257eb00d6522d9dd7dd60362dee8}](../Resources/figures/2c3a257eb00d6522d9dd7dd60362dee8.png)
 
-###### Error event out
+####### Error event out
 
 This is executed when an error event is received. It does the following:
 
@@ -281,7 +281,7 @@ The VI ForceTerminateSequence does the following:
 
 ![Main Loop's events: Error event. Power Supply error case.\label{figureonehundredninety-eight2c29984b14e118b9af3b1eced71ec134}](../Resources/figures/2c29984b14e118b9af3b1eced71ec134.png)
 
-###### On button
+####### On button
 
 It enqueues the steps needed to turn on the subsystem using the
 OnSequenceEnqueue.
@@ -298,7 +298,7 @@ The following sequence steps are enqueued:
 
 ![Main Loop's events: On Button value change.\label{figureonehundredninety-nine547336821cedb8e73657bc2ac6a62ab3}](../Resources/figures/547336821cedb8e73657bc2ac6a62ab3.png)
 
-###### Off button
+####### Off button
 
 It enqueues the steps needed to turn on the subsystem using the
 OffSequenceEnqueue.vi.
@@ -315,7 +315,7 @@ The following sequence steps are enqueued:
 
 ![Main Loop's events: Off Button value change.\label{figuretwohundred73fd72b7f65bb704376a523dbbc2f451}](../Resources/figures/73fd72b7f65bb704376a523dbbc2f451.png)
 
-###### Reset alarm button
+####### Reset alarm button
 
 It enqueues the steps needed to reset the subsystem using the
 ResetSequenceEnqueue.vi.
@@ -332,7 +332,7 @@ The following sequence steps are enqueued:
 
 ![Main Loop's events: Reset alarm button value change\label{figuretwohundredone1422f39d292b3ccc6ba7b49d2a09e7d5}](../Resources/figures/1422f39d292b3ccc6ba7b49d2a09e7d5.png)
 
-###### HMIMain2Window Event out
+####### HMIMain2Window Event out
 
 It receives the event reference coming from the main, and depending on it does
 the following:
@@ -344,7 +344,7 @@ the following:
 
 ![Main Loop's events: HMIMain2Window event.\label{figuretwohundredtwo00c726b75dfc27ed3ed22607c6fc435d}](../Resources/figures/00c726b75dfc27ed3ed22607c6fc435d.png)
 
-##### Consumer Loop
+###### Consumer Loop
 
 Here the steps enqueued by the main loop are dequeued and processed.
 
@@ -361,28 +361,28 @@ Available methods:
 
 - Reset Alarm CMD: CppAppMPSCMD.lvclass:ResetAlarm.vi
 
-###### On
+####### On
 
 Requests to turn on the subsystem using the SendPowerCMD.vi, overridden by the
 one from the CppAppMPSCMD.lvclass.
 
 ![Cases of the consumer loop's case structure: On case.\label{figuretwohundredthree86760e2705506f748c2b4a9e032b178b}](../Resources/figures/86760e2705506f748c2b4a9e032b178b.png)
 
-###### Off
+####### Off
 
 Requests to turn off the subsystem using the SendPowerCMD.vi, overridden by the
 one from the CppAppMPSCMD.lvclass.
 
 ![Cases of the consumer loop's case structure: Off case.\label{figuretwohundredfive670b98064c4114a8c58474c1b91d6fac}](../Resources/figures/670b98064c4114a8c58474c1b91d6fac.png)
 
-###### Reset
+####### Reset
 
 Requests to reset alarms of the subsystem using the ResetAlarm.vi, overridden by
 the one from the CppAppMPSCMD.lvclass.
 
 ![Cases of the consumer loop's case structure: Reset case.\label{figuretwohundredsixda13b302d16b941fd2eeef62b5a41840}](../Resources/figures/da13b302d16b941fd2eeef62b5a41840.png)
 
-###### Wait For Ack
+####### Wait For Ack
 
 It waits for the ack response of the PXI in order to synchronize. After a
 timeout of 2,5 seconds throws a timeout error, the ack must be received before
@@ -390,35 +390,35 @@ this timeout.
 
 ![Cases of the consumer loop's case structure: WaitForAck case.\label{figuretwohundredseven3828350ba86b51783d12b0e8314ae5a9}](../Resources/figures/3828350ba86b51783d12b0e8314ae5a9.png)
 
-###### Wait For Done
+####### Wait For Done
 
 It waits for the done response of the PXI in order to synchronize. After the
 specified timeout at the ack event a timeout error is throwed.
 
 ![Cases of the consumer loop's case structure: WaitForDone case.\label{figuretwohundredeight07fd9cb2999e02b541d0ecea67a3672a}](../Resources/figures/07fd9cb2999e02b541d0ecea67a3672a.png)
 
-###### Init Sequence
+####### Init Sequence
 
 This case puts the window in executing mode: disabling the possibility of
 pushing buttons and hiding the menu.
 
 ![Cases of the consumer loop's case structure: InitSequence case.\label{figuretwohundrednine4ad159eb612954c5bc11cd4aa47c4d79}](../Resources/figures/4ad159eb612954c5bc11cd4aa47c4d79.png)
 
-###### End Sequence
+####### End Sequence
 
 This case puts the window back into normal mode: hides the ack progress bar,
 enables the controls and shows the menu.
 
 ![Cases of the consumer loop's case structure: EndSequence case.\label{figuretwohundredtenf9d38fc1903263c02c7fe1ca7f81ba9b}](../Resources/figures/f9d38fc1903263c02c7fe1ca7f81ba9b.png)
 
-###### Stop VI
+####### Stop VI
 
 This case is used to stop the current loop. Here the Consumer Loop queue is
 released.
 
 ![Cases of the consumer loop's case structure: StopVI case.\label{figuretwohundredeleven7de9017618651709ec41755226e03c12}](../Resources/figures/7de9017618651709ec41755226e03c12.png)
 
-##### Update Graph Loop
+###### Update Graph Loop
 
 This loop at the bottom is used uniquely for the graph management.
 
@@ -443,7 +443,7 @@ The case structure from the loop has two possible cases:
 
 ![The Updating graph loop.\label{figuretwohundredtwelve32acf94dd2a058c306f01c699b601194}](../Resources/figures/32acf94dd2a058c306f01c699b601194.png)
 
-### List of SubVIs
+#### List of SubVIs
 
 - Activatedeactivatecontrols.vi: This manages the control cover, to do so it
     checks the following global variables:
