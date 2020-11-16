@@ -13,6 +13,7 @@ develop_generate:
 #    - develop
   script:
     - ls -la
+    - sudo chmod 777 generate_pdf
     - ./generate_pdf $CI_COMMIT_SHORT_SHA
   artifacts:
     paths:
