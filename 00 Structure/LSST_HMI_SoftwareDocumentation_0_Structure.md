@@ -1,31 +1,4 @@
-| **3151 LSST**               |                     |
-|-----------------------------|---------------------|
-| **Requested by:**           | **LSST**            |
-| **Doc. Code / Version nº:** | Doc. Code / Version |
-| **Editor:**                 | Julen Garcia        |
-| **Approved by:**            |                     |
-| **Date:**                   | 01/09/2019          |
-
-\| INDEX \|
-
-[1. Introduction 4](#introduction)
-
-[2. Reference documents 5](#reference-documents)
-
-[3. HMI Structure 6](#hmi-structure)
-
-\| DOCUMENT HISTORY \|
-
-| **Version** | **Date** | **Author** | **Comments** |
-|-------------|----------|------------|--------------|
-|             |          |            |              |
-|             |          |            |              |
-|             |          |            |              |
-|             |          |            |              |
-|             |          |            |              |
-
-Introduction
-============
+# Introduction
 
 This document explains the structure for the Human Machine Interface (HMI)
 software located in the HMIComputers repository,
@@ -37,32 +10,16 @@ explained in a separated file.
 
 Important notes:
 
--  In the documentation there could be some misunderstandings due to the naming
-    of the hardware devices and software. Mainly when using the abbreviations
-    EUI and HHD.
+- In the documentation there could be some misunderstandings due to the naming of the hardware devices and software. Mainly when using the abbreviations EUI and HHD.
+  - EUI stands for Engineering User Interface, but sometimes it is used to
+    refer to the PC that runs the EUI itself. This PC it is named MCC (Main
+    Control Computer).
+  - HHD stands for Handheld Device, but the EUI that runs on the HHD it is
+    also called HHD.
 
-    -   EUI stands for Engineering User Interface, but sometimes it is used to
-        refer to the PC that runs the EUI itself. This PC it is named MCC (Main
-        Control Computer).
+- HMI stands for Human Machine Interface, but sometimes it is referred as EUI.
 
-    -   HHD stands for Handheld Device, but the EUI that runs on the HHD it is
-        also called HHD.
-
--   HMI stands for Human Machine Interface, but sometimes it is referred as EUI.
-
-Reference documents
-===================
-
-| **Nº** | **Document** | **Code** | **Version** |
-|--------|--------------|----------|-------------|
-| **1**  |              |          |             |
-| **2**  |              |          |             |
-| **3**  |              |          |             |
-| **4**  |              |          |             |
-| **5**  |              |          |             |
-
-HMI Structure
-=============
+# HMI Structure
 
 The Human Machine Interface (HMI) is an important part of the overall system, as
 seen in Figure \ref{figureone350f30df820b4ef01f38b7cadcba9985} where the HMI code corresponds to the EUI (Engineering User
