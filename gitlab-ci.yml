@@ -1,0 +1,41 @@
+stages:
+  - develop_generate
+  - tag_generate
+  - release
+
+variables:
+  GIT_STRATEGY: fetch
+
+develop_generate:
+  stage: develop_generate
+  image: bsantamaria/pandoc-extended
+  only:
+    - develop
+  script:
+    - ./generate_pdf $CI_COMMIT_SHORT_SHA
+  artifacts:
+    paths:
+      - LSST_HMI_SoftwareDocumentation.pdf
+
+tag_generate:
+  stage: tag_generate
+  image: bsantamaria/pandoc-extended
+  only:
+    - tags
+  script:
+    - ./generate_pdf $CI_COMMIT_TAG
+  artifacts:
+    expire_in: never
+    paths:
+      - LSST_HMI_SoftwareDocumentation.pdf
+
+release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:edge
+  only:
+    - tags
+  script:
+    - >
+      release-cli create --name $CI_COMMIT_TAG
+      --assets-link '{"name":"LSST_HMI_SoftwareDocumentation","url":"https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/hmicomputers_documentation/-/jobs/artifacts/'$CI_COMMIT_SHA'/raw/LSST_HMI_SoftwareDocumentation.pdf?job=tag_generate"}'
+
