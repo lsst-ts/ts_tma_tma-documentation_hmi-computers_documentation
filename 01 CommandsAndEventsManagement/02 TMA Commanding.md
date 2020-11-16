@@ -1,115 +1,5 @@
-| **3151 LSST**               |                     |
-|-----------------------------|---------------------|
-| **Requested by:**           | **LSST**            |
-| **Doc. Code / Version nº:** | Doc. Code / Version |
-| **Editor:**                 | Julen Garcia        |
-| **Approved by:**            |                     |
-| **Date:**                   | 01/09/2019          |
 
-\| INDEX \|
-
-[1. Introduction 5](#introduction)
-
-[2. Reference documents 6](#reference-documents)
-
-[3. TCP Client 7](#_Toc56073546)
-
-[3.1 Component Configuration 7](#_Toc56073547)
-
-[3.2 Sender.lvclass 7](#_Toc56073548)
-
-[3.2.1 Configuration file explained 7](#_Toc56073549)
-
-[3.2.2 Task process 8](#_Toc56073550)
-
-[3.2.3 Task methods 8](#_Toc56073551)
-
-[3.2.4 CMD Reception loop 10](#_Toc56073552)
-
-[4. TMA Commanding 23](#tma-commanding)
-
-[4.1 CppAppCommand.lvclass 24](#cppappcommand.lvclass)
-
-[4.1.1 Methods 24](#methods)
-
-[4.1.2 Childs 27](#childs)
-
-[4.2 GetEventfromTMA.lvclass 32](#geteventfromtma.lvclass)
-
-[4.2.1 Task process 32](#task-process)
-
-[4.2.2 Task methods 33](#task-methods)
-
-[4.2.3 CMD Reception loop 34](#cmd-reception-loop)
-
-[4.3 TMAOMTMonitoring task 41](#tmaomtmonitoring-task)
-
-[4.3.1 Task process 41](#task-process-1)
-
-[4.3.2 Task methods 42](#task-methods-1)
-
-[4.3.3 Main loop 44](#main-loop)
-
-[4.4 CommanderCheck task 59](#commandercheck-task)
-
-[4.4.1 Task process 59](#task-process-2)
-
-[4.4.2 Task methods 60](#task-methods-2)
-
-[4.4.3 Main loop 62](#main-loop-1)
-
-[5. Alarm Management 74](#_Toc56073569)
-
-[5.1 Alarm Recpetion Task.lvclass 74](#_Toc56073570)
-
-[5.1.1 Task process 75](#_Toc56073571)
-
-[5.1.2 Methods 75](#_Toc56073572)
-
-[5.1.3 CMD Reception loop 77](#_Toc56073573)
-
-\| DOCUMENT HISTORY \|
-
-| **Version** | **Date** | **Author** | **Comments** |
-|-------------|----------|------------|--------------|
-|             |          |            |              |
-|             |          |            |              |
-|             |          |            |              |
-|             |          |            |              |
-|             |          |            |              |
-
-Introduction
-============
-
-This document contains the different components related to the commands and
-events from the TMA that are:
-
--   TCP Client: this component is the one that connects to the TMA over TCP to
-    send and receive the TCP messages. The message to send is specified to the
-    task by a public method of the TCP client object, and the received messages
-    are published in a user event created when the object is initialized.
-
--   TMA Commanding: this component is the one sending commands to the TMA and
-    monitoring the events received from it. This is done using the TCP Client
-    component.
-
--   Alarm Management: this component gets the alarm and warning events from the
-    TCP client, logging the received alarms and warnings to have a record of the
-    different events occurred while operating the system.
-
-Reference documents
-===================
-
-| **Nº** | **Document** | **Code** | **Version** |
-|--------|--------------|----------|-------------|
-| **1**  |              |          |             |
-| **2**  |              |          |             |
-| **3**  |              |          |             |
-| **4**  |              |          |             |
-| **5**  |              |          |             |
-
-TMA Commanding
-==============
+## TMA Commanding
 
 This component is the one sending commands to the TMA and monitoring the events
 received from it. This is done using the TCP Client component and some other
@@ -139,8 +29,7 @@ Commanding component. These are:
 
 Each of the classes mentioned in above are explained in the upcoming sections.
 
-CppAppCommand.lvclass
----------------------
+### CppAppCommand.lvclass
 
 This class is the one that generates the TCP message for each specific command
 and sends them to the TMA using the TCP Client. To do so, each subsystem has a
@@ -148,11 +37,11 @@ specific class that inherits from the CppAppCommand class and has the specific
 commands available for that subsystem. The methods in the parent class, the
 CppAppCommand class, are dynamic dispatch and overridden by the child classes.
 
-### Methods
+#### Methods
 
 Here each of the available methods are listed.
 
-#### CppAppCommand_Init
+##### CppAppCommand_Init
 
 Initialize the command father object, this means initialize the ID repo (for
 having an incremental ID different every time), the source repo and the repo for
@@ -166,43 +55,43 @@ with an empty object of the parent class.
 
 ![CppAppCommand.lvclass_CppAppCommand_Init.vi context help.\label{figuretwenty-two70937cbe32ad787c123bf2984e769e84}](../Resources/figures/70937cbe32ad787c123bf2984e769e84.png)
 
-#### CleanUp
+##### CleanUp
 
 Release queues from the different repos.
 
 ![CppAppCommand.lvclass_CleanUp.vi context help.\label{figuretwenty-three1836b222ffadf2c349e501ca25451728}](../Resources/figures/1836b222ffadf2c349e501ca25451728.png)
 
-#### Enable
+##### Enable
 
 Send Enable Command to TMA.
 
 ![CppAppCommand.lvclass_Enable.vi context help.\label{figuretwenty-four0bd68a2221b292b0572a819716bae693}](../Resources/figures/0bd68a2221b292b0572a819716bae693.png)
 
-#### Home
+##### Home
 
 Send Command to Perform Home operation
 
 ![CppAppCommand.lvclass_Home.vi context help.\label{figuretwenty-five0c97331a0b955daf960053c6034fdca9}](../Resources/figures/0c97331a0b955daf960053c6034fdca9.png)
 
-#### Move
+##### Move
 
 Send Move command to TMA
 
 ![CppAppCommand.lvclass_Move.vi context help.\label{figuretwenty-sixbaffd692dbdffd8bfe59a54cb57983d6}](../Resources/figures/baffd692dbdffd8bfe59a54cb57983d6.png)
 
-#### MoveVelocity
+##### MoveVelocity
 
 Send Move Velocity command to TMA
 
 ![CppAppCommand.lvclass_MoveVelocity.vi context help.\label{figuretwenty-sevenfdae7fa9ce09673d7fdde8e999f8ee16}](../Resources/figures/fdae7fa9ce09673d7fdde8e999f8ee16.png)
 
-#### ResetAlarm
+##### ResetAlarm
 
 Send Reset Alarm Command to TMA
 
 ![CppAppCommand.lvclass_ResetAlarm.vi context help.\label{figuretwenty-eight99f085b41c6679388638168c4d447f6b}](../Resources/figures/99f085b41c6679388638168c4d447f6b.png)
 
-#### SendCMD
+##### SendCMD
 
 This VI generates the TCP message for the specified command and with the
 specified parameters and sends it to the TCP Client module to send it over TCP
@@ -211,31 +100,31 @@ they have to send.
 
 ![CppAppCommand.lvclass_SendCMD.vi context help.\label{figuretwenty-nine8610d62c6fe583826dfca68b92b003a9}](../Resources/figures/8610d62c6fe583826dfca68b92b003a9.png)
 
-#### SendPowerCMD
+##### SendPowerCMD
 
 Send power command to TMA
 
 ![CppAppCommand.lvclass_SendPowerCMD.vi context help.\label{figurethirtyfc49ec768230affd87d663d6d4795c6e}](../Resources/figures/fc49ec768230affd87d663d6d4795c6e.png)
 
-#### Stop
+##### Stop
 
 Send Stop to TMA
 
 ![CppAppCommand.lvclass_Stop.vi context help.\label{figurethirty-one959233c7aec15e1abbb3d7479ed42ae9}](../Resources/figures/959233c7aec15e1abbb3d7479ed42ae9.png)
 
-#### Tracking
+##### Tracking
 
 Send Tracking Command to TMA
 
 ![CppAppCommand.lvclass_Tracking.vi context help.\label{figurethirty-two9768ab5b5a9ad349d0fa8a047fb9e841}](../Resources/figures/9768ab5b5a9ad349d0fa8a047fb9e841.png)
 
-### Childs
+#### Childs
 
 The list of the available childs and the methods that use each of them
 correspond to the existing subsystems and the corresponding commands for each
 subsystem.
 
-#### CppAppACWCMD.lvclass
+##### CppAppACWCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth Cable Wrap
 subsystem, the methods in this class are:
@@ -254,7 +143,7 @@ subsystem, the methods in this class are:
 
 -   TrackTarget
 
-#### CppAppACWDrivesCMD.lvclass
+##### CppAppACWDrivesCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth Cable Wrap
 drives subsystem, the methods in this class are:
@@ -267,7 +156,7 @@ drives subsystem, the methods in this class are:
 
 -   WriteDriveIdent
 
-#### CppAppAZCMD.lvclass
+##### CppAppAZCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth subsystem, the
 methods in this class are:
@@ -286,7 +175,7 @@ methods in this class are:
 
 -   Tracking
 
-#### CppAppAZDrivesCMD.lvclass
+##### CppAppAZDrivesCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth drives
 subsystem, the methods in this class are:
@@ -299,7 +188,7 @@ subsystem, the methods in this class are:
 
 -   WriteDriveIdent
 
-#### CppAppAZThermalCMD.lvclass
+##### CppAppAZThermalCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth drives thermal
 subsystem, the methods in this class are:
@@ -314,7 +203,7 @@ subsystem, the methods in this class are:
 
 -   WriteAZThermalIdent
 
-#### CppAppBALCMD.lvclass
+##### CppAppBALCMD.lvclass
 
 This class corresponds to the commands available for the Balancing subsystem,
 the methods in this class are:
@@ -335,7 +224,7 @@ the methods in this class are:
 
 -   WriteElementIdent
 
-#### CppAppCabinet0101CMD.lvclass
+##### CppAppCabinet0101CMD.lvclass
 
 This class corresponds to the commands available for the Cabinet 0101 subsystem,
 the methods in this class are:
@@ -346,7 +235,7 @@ the methods in this class are:
 
 -   SendPowerCMD
 
-#### CppAppCabinetCMD.lvclass
+##### CppAppCabinetCMD.lvclass
 
 This class corresponds to the commands available for the Main Cabinet subsystem,
 the methods in this class are:
@@ -355,7 +244,7 @@ the methods in this class are:
 
 -   TrackExtTemp
 
-#### CppAppCCWCMD.lvclass
+##### CppAppCCWCMD.lvclass
 
 This class corresponds to the commands available for the Camera Cable wrap
 subsystem, the methods in this class are:
@@ -374,7 +263,7 @@ subsystem, the methods in this class are:
 
 -   TrackTarget
 
-#### CppAppCCWDrivesCMD.lvclass
+##### CppAppCCWDrivesCMD.lvclass
 
 This class corresponds to the commands available for the Camera Cable Wrap
 drives subsystem, the methods in this class are:
@@ -389,7 +278,7 @@ drives subsystem, the methods in this class are:
 
 -   WriteDriveIdent
 
-#### CppAppCommaderCMD.lvclass
+##### CppAppCommaderCMD.lvclass
 
 This class corresponds to the commands available for the Commander subsystem,
 the methods in this class are:
@@ -400,7 +289,7 @@ the methods in this class are:
 
 -   SystemReady
 
-#### CppAppDPCMD.lvclass
+##### CppAppDPCMD.lvclass
 
 This class corresponds to the commands available for the Deployable Platform
 subsystem, the methods in this class are:
@@ -419,7 +308,7 @@ subsystem, the methods in this class are:
 
 -   WritePlatformIdent
 
-#### CppAppEIBCMD.lvclass
+##### CppAppEIBCMD.lvclass
 
 This class corresponds to the commands available for the Encoder subsystem, the
 methods in this class are:
@@ -440,7 +329,7 @@ methods in this class are:
 
 -   WriteElementIdent
 
-#### CppAppELCMD.lvclass
+##### CppAppELCMD.lvclass
 
 This class corresponds to the commands available for the Elevation subsystem,
 the methods in this class are:
@@ -459,7 +348,7 @@ the methods in this class are:
 
 -   Tracking
 
-#### CppAppELDrivesCMD.lvclass
+##### CppAppELDrivesCMD.lvclass
 
 This class corresponds to the commands available for the Elevation drives
 subsystem, the methods in this class are:
@@ -472,7 +361,7 @@ subsystem, the methods in this class are:
 
 -   WriteDriveIdent
 
-#### CppAppELThermalCMD.lvclass
+##### CppAppELThermalCMD.lvclass
 
 This class corresponds to the commands available for the Elevation drives
 thermal subsystem, the methods in this class are:
@@ -487,7 +376,7 @@ thermal subsystem, the methods in this class are:
 
 -   WriteELThermalIdent
 
-#### CppAppLPCMD.lvclass
+##### CppAppLPCMD.lvclass
 
 This class corresponds to the commands available for the Locking Pins subsystem,
 the methods in this class are:
@@ -512,7 +401,7 @@ the methods in this class are:
 
 -   WritePinIdent
 
-#### CppAppMainAxesCMD.lvclass
+##### CppAppMainAxesCMD.lvclass
 
 This class corresponds to the commands available for the Main Axes subsystem,
 the methods in this class are:
@@ -523,7 +412,7 @@ the methods in this class are:
 
 -   TrackTarget
 
-#### CppAppMCCMD.lvclass
+##### CppAppMCCMD.lvclass
 
 This class corresponds to the commands available for the Mirror Cover subsystem,
 the methods in this class are:
@@ -546,7 +435,7 @@ the methods in this class are:
 
 -   WriteSectorIdent
 
-#### CppAppMCLCMD.lvclass
+##### CppAppMCLCMD.lvclass
 
 This class corresponds to the commands available for the Mirror Cover Locks
 subsystem, the methods in this class are:
@@ -569,7 +458,7 @@ subsystem, the methods in this class are:
 
 -   WriteMirrorLockIdent
 
-#### CppAppModbusTempControllersCMD.lvclass
+##### CppAppModbusTempControllersCMD.lvclass
 
 This class corresponds to the commands available for the Modbus Temperature
 Controllers subsystem, the methods in this class are:
@@ -584,7 +473,7 @@ Controllers subsystem, the methods in this class are:
 
 -   WriteDriveIdent
 
-#### CppAppMPSCMD.lvclass
+##### CppAppMPSCMD.lvclass
 
 This class corresponds to the commands available for the Main Power Supply
 subsystem, the methods in this class are:
@@ -593,7 +482,7 @@ subsystem, the methods in this class are:
 
 -   SendPowerCMD
 
-#### CppAppOSSCMD.lvclass
+##### CppAppOSSCMD.lvclass
 
 This class corresponds to the commands available for the Oil Supply System
 subsystem, the methods in this class are:
@@ -612,7 +501,7 @@ subsystem, the methods in this class are:
 
 -   SendPowerCMD
 
-#### CppAppSafetyCMD.lvclass
+##### CppAppSafetyCMD.lvclass
 
 This class corresponds to the commands available for the Safety subsystem, the
 methods in this class are:
@@ -623,7 +512,7 @@ methods in this class are:
 
 -   SafetySetOverride
 
-#### CppAppTECCMD.lvclass
+##### CppAppTECCMD.lvclass
 
 This class corresponds to the commands available for the Top End Chiller
 subsystem, the methods in this class are:
@@ -634,7 +523,7 @@ subsystem, the methods in this class are:
 
 -   TrackExtTemp
 
-#### CppAppTFCMD.lvclass
+##### CppAppTFCMD.lvclass
 
 This class corresponds to the commands available for the Transfer Function
 subsystem, the methods in this class are:
@@ -649,7 +538,7 @@ GetEventfromTMA.lvclass
 This class is responsible of parsing the events from the TMA received by the TCP
 Client and generate the corresponding events inside the HMI application.
 
-### Task process
+#### Task process
 
 This task was created using the NI GOOP Developing Suite, this task is object
 oriented and the communication between methods is done using queues and user
@@ -659,11 +548,11 @@ instance that manages all the received events from the TMA.
 
 ![GetEventFromTMA task\label{figurethirty-three69459e04fb4b90c71b521567c9afc8ef}](../Resources/figures/69459e04fb4b90c71b521567c9afc8ef.png)
 
-### Task methods
+#### Task methods
 
 Here the available methods for this task are explained.
 
-#### GetEVENTFromTMA_Init.vi
+##### GetEVENTFromTMA_Init.vi
 
 Initialize the process to hear from TMA OMT.
 
@@ -673,34 +562,34 @@ the TMA OMT (operation_manager) itself.
 
 ![Task method: GetEventFromTMA_Init\label{figurethirty-four74a6d5ce8acd1e1bde61e9197fd16bad}](../Resources/figures/74a6d5ce8acd1e1bde61e9197fd16bad.png)
 
-#### CleanUp
+##### CleanUp
 
 Stop task process and destroy user events.
 
 ![Task method: CleanUp\label{figurethirty-five625255128b48dfab8cc2ef1aa628e8ab}](../Resources/figures/625255128b48dfab8cc2ef1aa628e8ab.png)
 
-#### ControlProcessWindow
+##### ControlProcessWindow
 
 This VI is used to show or hide the process front panel. Depending on the
 ShowProcessWindow control value.
 
 ![Task method: ControlProcessWindow\label{figurethirty-six5b09030f1c224f409c548c97e07cd083}](../Resources/figures/5b09030f1c224f409c548c97e07cd083.png)
 
-#### GetEventRefs
+##### GetEventRefs
 
 This VI is used to return the references to the different events: ack, done,
 error and warning.
 
 ![Task method: GetEventRefs\label{figurethirty-sevend440b222f78f8f6b8dc91f280e9453c3}](../Resources/figures/d440b222f78f8f6b8dc91f280e9453c3.png)
 
-### CMD Reception loop
+#### CMD Reception loop
 
 This loop receives the commands from the public methods and executes the
 corresponding actions. This loop has a state for each method as well as some
 other states used for loop managing, each state is explained in the next
 sections.
 
-#### Init
+##### Init
 
 This state is just executed once and is the first executed one. Here the
 initialization actions are executed. These are:
@@ -713,7 +602,7 @@ initialization actions are executed. These are:
 
 ![GetEVENTFromTMA.lvclass_Process.vi Init\label{figurethirty-eight7594b113e7a74001bbb6be57518ab3a3}](../Resources/figures/7594b113e7a74001bbb6be57518ab3a3.png)
 
-#### Idle
+##### Idle
 
 This state is executed constantly after executing every new CMD, here the events
 created at the methods are received and executed in the next iteration, in the
@@ -750,7 +639,7 @@ With some messages no user events are generated. These cases are:
 
 ![GetEVENTFromTMA.lvclass_Process.vi DataFromTCP\label{figureforty-onef00e25525f869863dacc2c4672994d39}](../Resources/figures/f00e25525f869863dacc2c4672994d39.png)
 
-#### Timeout
+##### Timeout
 
 This state is executed when there is something that must be executed in the
 specified timeout of the Idle state event structure, see Figure \ref{figureforty-twoffea54a30df54a93c2d371689872356d}.
@@ -759,26 +648,26 @@ specified timeout of the Idle state event structure, see Figure \ref{figureforty
 
 ![GetEVENTFromTMA.lvclass_Process.vi Timeout\label{figureforty-three584b251ad792650692f863fd0386d08b}](../Resources/figures/584b251ad792650692f863fd0386d08b.png)
 
-#### ShowWindow
+##### ShowWindow
 
 This state is used to show the front panel of the process.
 
 ![CMD Receiver states: ShowWindow\label{figureforty-foure69d2d974ee18af4bb649e21db92269b}](../Resources/figures/e69d2d974ee18af4bb649e21db92269b.png)
 
-#### HideWindow
+##### HideWindow
 
 This state is used to hide the front panel of the process.
 
 ![CMD Receiver states: HideWindow\label{figureforty-five4804276518cb9f6e2c8f0ccbdc7abf31}](../Resources/figures/4804276518cb9f6e2c8f0ccbdc7abf31.png)
 
-#### Shutdown
+##### Shutdown
 
 This state is reached when the shutdown CMD is received. This loop is used to
 stop the CMD receiver loop.
 
 ![GetEVENTFromTMA.lvclass_Process.vi shutdown\label{figureforty-sixb2b82c4abc519e2523f469bacf952aa8}](../Resources/figures/b2b82c4abc519e2523f469bacf952aa8.png)
 
-#### Error
+##### Error
 
 This state is reached when an error occurs at the task, here the error is
 published and cleared for the next iteration.
@@ -795,7 +684,7 @@ This task is responsible of monitoring the TMA OMT status.
 Here the CSC connection status, CSC commands, CSC Events and TMA OMT actual
 state are received and saved.
 
-### Task process
+#### Task process
 
 This task was created using the NI GOOP Developing Suite, this task is object
 oriented and the communication between methods is done using queues and user
@@ -805,95 +694,95 @@ This process has only one instance that manages all the received data.
 
 ![TMAOMTMonitoring task\label{figureforty-eight61555585148d675193b203cfbb113f09}](../Resources/figures/61555585148d675193b203cfbb113f09.png)
 
-### Task methods
+#### Task methods
 
 Here the available methods for this task are explained.
 
-#### TMAOMTMonitoring_Init.vi
+##### TMAOMTMonitoring_Init.vi
 
 This VI is used to launch the process.
 
 ![Task method: TMAOMTMonitoring \_Init\label{figureforty-nine591d405c4f711bb40656637b9a885def}](../Resources/figures/591d405c4f711bb40656637b9a885def.png)
 
-#### CleanUp
+##### CleanUp
 
 This VI is used to stop the task and release all the references generated for
 this task.
 
 ![Task method: CleanUp\label{figurefifty66ac09dc52f60ca146973034097794b8}](../Resources/figures/66ac09dc52f60ca146973034097794b8.png)
 
-#### ControlProcessWindow
+##### ControlProcessWindow
 
 This VI is used to show or hide the process front panel. Depending on the
 ShowProcessWindow control value.
 
 ![Task method: ControlProcessWindow\label{figurefifty-one97c7b83d936bca9900fdff7fe8ee0ced}](../Resources/figures/97c7b83d936bca9900fdff7fe8ee0ced.png)
 
-#### NewTMAState
+##### NewTMAState
 
 This VI is used to send the new TMA OMT state string to the process and update
 the memory.
 
 ![Task method: NewTMAState\label{figurefifty-two98e0fabce511f820847f3a6cc4ce20f4}](../Resources/figures/98e0fabce511f820847f3a6cc4ce20f4.png)
 
-#### SetTCSCommStatus
+##### SetTCSCommStatus
 
 This VI is used to send the TCS connection status to the process and update the
 memory.
 
 ![Task method: SetTCSCommStatus\label{figurefifty-three10fc86376d1e4c4d13a8829a84b41074}](../Resources/figures/10fc86376d1e4c4d13a8829a84b41074.png)
 
-#### GetTMAStatus
+##### GetTMAStatus
 
 This VI is used to get the status of the TMA OMT from the task.
 
 ![Task method: GetTMAStatus\label{figurefifty-four56e46ec31ea69914ca986d8406542515}](../Resources/figures/56e46ec31ea69914ca986d8406542515.png)
 
-#### NEWTCSCmd
+##### NEWTCSCmd
 
 This VI is used to send the last command received from the TCS to the process
 and update the memory.
 
 ![Task method: SendDONE\label{figurefifty-fivee5b59d1fdb07ed4928c03eb607ce114d}](../Resources/figures/e5b59d1fdb07ed4928c03eb607ce114d.png)
 
-#### GetCMDHistory
+##### GetCMDHistory
 
 This VI is used to get the last 100 CMDs received from the TCS.
 
 ![Task method: GetCMDHistory\label{figurefifty-sixa25363da62efc80d885ff6dab7c0f329}](../Resources/figures/a25363da62efc80d885ff6dab7c0f329.png)
 
-#### GetEventHistory
+##### GetEventHistory
 
 This VI is used to get the last 100 events received from the TCS.
 
 ![Task method: GetEventHistory\label{figurefifty-seven07e3f8bbdee245d20ef852de67f1f7dd}](../Resources/figures/07e3f8bbdee245d20ef852de67f1f7dd.png)
 
-#### NEWTCSEvent
+##### NEWTCSEvent
 
 This VI is used to send the last event received from the TCS to the process and
 update the memory. This is not used for error or waring events.
 
 ![Task method: 4.7.2.10 NEWTCSEvent\label{figurefifty-eight2cc603df606ab033bc958043cf61fb45}](../Resources/figures/2cc603df606ab033bc958043cf61fb45.png)
 
-### Main loop
+#### Main loop
 
 This loop receives the CMDs from the methods and executes them in the same loop.
 The different states of the loop are explained in the following sections.
 
-#### Init
+##### Init
 
 Here the initialization actions are executed.
 
 ![Loop states: Init\label{figurefifty-ninee404f638668268d3073bc082a1b7e253}](../Resources/figures/e404f638668268d3073bc082a1b7e253.png)
 
-#### Idle
+##### Idle
 
 This state is executed constantly after executing every new CMD, here the events
 created at the methods are received and executed in the next iteration.
 
 ![Loop states: Idle\label{figuresixty3f276b7d1d394e2dbddc70e78ad4a42d}](../Resources/figures/3f276b7d1d394e2dbddc70e78ad4a42d.png)
 
-#### Timeout
+##### Timeout
 
 This state is executed when there is something that must be executed in the
 specified timeout of the Idle state event structure, see Figure \ref{figuresixty-one5a9d7a30173c7114968eb1d6689ee85b}.
@@ -902,19 +791,19 @@ specified timeout of the Idle state event structure, see Figure \ref{figuresixty
 
 ![Loop states: Timeout\label{figuresixty-twoea096d17d2afe10dc90a83d631c2de5a}](../Resources/figures/ea096d17d2afe10dc90a83d631c2de5a.png)
 
-#### ShowWindow
+##### ShowWindow
 
 This state is used to show the front panel of the process.
 
 ![Loop states: ShowWindow\label{figuresixty-three2fc66861285c454098d66de610dc1d43}](../Resources/figures/2fc66861285c454098d66de610dc1d43.png)
 
-#### HideWindow
+##### HideWindow
 
 This state is used to hide the front panel of the process.
 
 ![Loop states: HideWindow\label{figuresixty-fourb2c602d1f37e364f2519be97641fca53}](../Resources/figures/b2c602d1f37e364f2519be97641fca53.png)
 
-#### NEWTMAStateSendEVENT
+##### NEWTMAStateSendEVENT
 
 This state is executed when the NEWTMAState method is used. Here the received
 string from the calling method is saved into the TMA Status Local Var register
@@ -922,7 +811,7 @@ as current state.
 
 ![Loop states: NEWTMAStateSendEVENT\label{figuresixty-five7539d8c63f7a1e88c8810c815c73e6c0}](../Resources/figures/7539d8c63f7a1e88c8810c815c73e6c0.png)
 
-#### SetConnStatus
+##### SetConnStatus
 
 This state is executed when the SetTCSCommStatus method is used. Here the
 received boolean from the calling method is saved into the TMA Status Local Var
@@ -930,7 +819,7 @@ register as current connection status.
 
 ![Loop states: SetConnStatus\label{figuresixty-six774331c6ab5684de8240990d7f7ba975}](../Resources/figures/774331c6ab5684de8240990d7f7ba975.png)
 
-#### NewTCSCMD
+##### NewTCSCMD
 
 This state is executed when the NewTCSCMD method is used. Here the received
 structure from the calling method is saved into the CMD history queue and TMA
@@ -938,7 +827,7 @@ Status Local Var register as last CMD.
 
 ![Loop states: NewTCSCMD\label{figuresixty-seven403bb5144ba657673d60392a0fe8fb44}](../Resources/figures/403bb5144ba657673d60392a0fe8fb44.png)
 
-#### NewTCSEvent
+##### NewTCSEvent
 
 This state is executed when the NewTCSEvent method is used. Here the received
 structure from the calling method is saved into the Event history queue and TMA
@@ -946,7 +835,7 @@ Status Local Var register as last CMD.
 
 ![Loop states: NewTCSEvent\label{figuresixty-eight305ef9ff7e5a8239909ad5dc6dc96e20}](../Resources/figures/305ef9ff7e5a8239909ad5dc6dc96e20.png)
 
-#### GetStatus
+##### GetStatus
 
 This state is executed when the GetTMAStatus method is used. Here the TMA Status
 Local Var register value is used as response to the calling method, the response
@@ -954,7 +843,7 @@ is given at the “QueueFromProcess” queue.
 
 ![Loop states: GetStatus\label{figuresixty-nine8465a63d0dc07265ad781d432b22c197}](../Resources/figures/8465a63d0dc07265ad781d432b22c197.png)
 
-#### GetCMDHistory
+##### GetCMDHistory
 
 This state is executed when the GetCMDHistory method is used. Here the CMD
 History queue elements are used as response to the calling method, the response
@@ -962,7 +851,7 @@ is given at the “QueueFromProcess” queue.
 
 ![Loop states: GetCMDHistory\label{figureseventy7033fdb8f196da0925147de5dbc07ebe}](../Resources/figures/7033fdb8f196da0925147de5dbc07ebe.png)
 
-#### GetEventHistory
+##### GetEventHistory
 
 This state is executed when the GetEventHistory method is used. Here the Event
 History queue elements are used as response to the calling method, the response
@@ -970,14 +859,14 @@ is given at the “QueueFromProcess” queue.
 
 ![Loop states: GetEventHistory\label{figureseventy-one559d9e03a710c7c09fb57fa908b722fd}](../Resources/figures/559d9e03a710c7c09fb57fa908b722fd.png)
 
-#### Error
+##### Error
 
 This state is reached when an error occurred at the loop. Here the error is
 posted to the event from process to be handled by the general error handler.
 
 ![Loop states: Error\label{figureseventy-two2278779df52a382906053f19e6d48960}](../Resources/figures/2278779df52a382906053f19e6d48960.png)
 
-#### Shutdown
+##### Shutdown
 
 This state is reached when the shutdown CMD is received. This loop is used to
 stop the loop and close the connection to the TMA OMT.
@@ -993,7 +882,7 @@ This task will be waiting for commands form outside and, in the timeout, will
 check the actual commander var. If the commander has changed an event will be
 placed in Events from process with new data.
 
-### Task process
+#### Task process
 
 This task was created using the NI GOOP Developing Suite, this task is object
 oriented and the communication between methods is done using queues and user
@@ -1003,11 +892,11 @@ This process has only one instance that manages all the received data.
 
 ![CommanderCheck task\label{figureseventy-four7363c779e5996d2aacc057f4407333e2}](../Resources/figures/7363c779e5996d2aacc057f4407333e2.png)
 
-### Task methods
+#### Task methods
 
 Here the available methods for this task are explained.
 
-#### CommanderCheck_Init
+##### CommanderCheck_Init
 
 This VI is used to launch the process, to do so some inputs are required:
 
@@ -1020,77 +909,77 @@ This VI is used to launch the process, to do so some inputs are required:
 
 ![Task method: CommanderCheck_Init\label{figureseventy-five6445a816c30524906950111a5620ae4a}](../Resources/figures/6445a816c30524906950111a5620ae4a.png)
 
-#### CleanUp
+##### CleanUp
 
 This VI is used to disconnect vars, stop the task and release all the references
 generated for this task.
 
 ![Task method: CleanUp\label{figureseventy-six4e9fbe23e7cb1efe91ee0810167ea38c}](../Resources/figures/4e9fbe23e7cb1efe91ee0810167ea38c.png)
 
-#### ControlProcessWindow
+##### ControlProcessWindow
 
 This VI is used to show or hide the process front panel. Depending on the
 ShowProcessWindow control value.
 
 ![Task method: ControlProcessWindow\label{figureseventy-seven30d5ec3d899eeea67e04c0db3267d019}](../Resources/figures/30d5ec3d899eeea67e04c0db3267d019.png)
 
-#### GetCommander
+##### GetCommander
 
 This VI is used to get the current commander. It also tells if the status is
 valid or not, but only after the first read of the variable is done.
 
 ![Task method: GetCommander\label{figureseventy-eight7b472a80d4577e51c0a8e1adabd81b67}](../Resources/figures/7b472a80d4577e51c0a8e1adabd81b67.png)
 
-#### DisconnectVars
+##### DisconnectVars
 
 This VI is used to disconnect the shared variables used by the task.
 
 ![Task method: DisconnectVars\label{figureseventy-nine1a136d96bfac47b2d0a766d0447251d9}](../Resources/figures/1a136d96bfac47b2d0a766d0447251d9.png)
 
-#### ConnectVars
+##### ConnectVars
 
 This VI is used to connect the shared variables used by the task.
 
 ![Task method: ConnectVars\label{figureeighty6a4c984904a47ab42fa91a0a42a09e38}](../Resources/figures/6a4c984904a47ab42fa91a0a42a09e38.png)
 
-#### GetCommanderEventRef
+##### GetCommanderEventRef
 
 This VI is used to get the ref to the events triggered by the task.
 
 ![Task method: GetCommanderEventRef\label{figureeighty-one90a3e010b6f5fa114a117c02d96f31f8}](../Resources/figures/90a3e010b6f5fa114a117c02d96f31f8.png)
 
-#### PublishTMAOMTState
+##### PublishTMAOMTState
 
 This VI is used to send the last TMA OMT state to the process and update the
 Status Variable.
 
 ![Task method: PublishTMAOMTState\label{figureeighty-two3454716cf4495c3c41b9fde5d6d892de}](../Resources/figures/3454716cf4495c3c41b9fde5d6d892de.png)
 
-#### ActivateChecking
+##### ActivateChecking
 
 This VI is used to activate or de activate the checking of the commander.
 
 ![Task method: ActivateChecking\label{figureeighty-threeefce932ef4109ace1691c863d16817fb}](../Resources/figures/efce932ef4109ace1691c863d16817fb.png)
 
-### Main loop
+#### Main loop
 
 This loop receives the CMDs from the methods and executes them in the same loop.
 The different states of the loop are explained in the following sections.
 
-#### Init
+##### Init
 
 Here the initialization actions are executed.
 
 ![Loop states: Init\label{figureeighty-four1ea4095f5e2b5e5782690ca248d4f8aa}](../Resources/figures/1ea4095f5e2b5e5782690ca248d4f8aa.png)
 
-#### Idle
+##### Idle
 
 This state is executed constantly after executing every new CMD, here the events
 created at the methods are received and executed in the next iteration.
 
 ![Loop states: Idle\label{figureeighty-five94dff4cabdad59c7848c32bf5205d93e}](../Resources/figures/94dff4cabdad59c7848c32bf5205d93e.png)
 
-#### Timeout
+##### Timeout
 
 This state is executed when there is something that must be executed in the
 specified timeout of the Idle state event structure. In this timeout, see Figure
@@ -1101,33 +990,33 @@ has new data a commander change event is triggered.
 
 ![Loop states: Timeout\label{figureeighty-sevene204a041042024141355e9d762050a89}](../Resources/figures/e204a041042024141355e9d762050a89.png)
 
-#### ShowWindow
+##### ShowWindow
 
 This state is used to show the front panel of the process.
 
 ![Loop states: ShowWindow\label{figureeighty-eight2fc66861285c454098d66de610dc1d43}](../Resources/figures/2fc66861285c454098d66de610dc1d43.png)
 
-#### HideWindow
+##### HideWindow
 
 This state is used to hide the front panel of the process.
 
 ![Loop states: HideWindow\label{figureeighty-nineb2c602d1f37e364f2519be97641fca53}](../Resources/figures/b2c602d1f37e364f2519be97641fca53.png)
 
-#### ConnectVars
+##### ConnectVars
 
 This state is executed when the ConnectVars method is used. Here the variable
 references specified at the init are connected.
 
 ![Loop states: ConnectVars\label{figureninety86d3fa8d2bb302e9f0a6efee90b87e06}](../Resources/figures/86d3fa8d2bb302e9f0a6efee90b87e06.png)
 
-#### DisconnectVars
+##### DisconnectVars
 
 This state is executed when the DisconnectVars method is used. Here the variable
 references are disconnected.
 
 ![Loop states: DisconnectVars\label{figureninety-onee03edfd2a04d8a7ae3375169b16d81ee}](../Resources/figures/e03edfd2a04d8a7ae3375169b16d81ee.png)
 
-#### GetCommander
+##### GetCommander
 
 This state is executed when the GetCommander method is used. Here the actual
 commander register is used as response to the calling method, the response is
@@ -1135,14 +1024,14 @@ given at the “QueueFromProcess” queue.
 
 ![Loop states: GetCommander\label{figureninety-two2556b04ad4da512c4ae8a85a3355c6b8}](../Resources/figures/2556b04ad4da512c4ae8a85a3355c6b8.png)
 
-#### PublishState
+##### PublishState
 
 This state is executed when the PublishTMAOMTState method is used. Here the
 string specified at the method is written to the status connection variable.
 
 ![Loop states: PublishState\label{figureninety-three8d24f3d5fa9066546bd43ce0765083aa}](../Resources/figures/8d24f3d5fa9066546bd43ce0765083aa.png)
 
-#### ActivateChecking
+##### ActivateChecking
 
 This state is executed when the ActivateChecking method is used. Here the
 Boolean value specified to the method is used to set the value of the
@@ -1150,14 +1039,14 @@ CheckCommander? Local variable.
 
 ![Loop states: ActivateChecking\label{figureninety-four42d9e52be937bdc9663b176537c2f2b4}](../Resources/figures/42d9e52be937bdc9663b176537c2f2b4.png)
 
-#### Error
+##### Error
 
 This state is reached when an error occurred at the loop. Here the error is
 posted to the event from process to be handled by the general error handler.
 
 ![Loop states: Error\label{figureninety-five82d9701342dc8c37e25aa2f0c3cc12d9}](../Resources/figures/82d9701342dc8c37e25aa2f0c3cc12d9.png)
 
-#### Shutdown
+##### Shutdown
 
 This state is reached when the shutdown CMD is received. This loop is used to
 stop the loop and close the connection to the variables.

@@ -1,4 +1,4 @@
-# TCP Client
+## TCP Client
 
 This component is the one that connects to the TMA over TCP to send and receive
 the TCP messages. The message to send is specified to the task by a public
@@ -11,7 +11,7 @@ For this component, the Sender.lvclass is used. This class is explained in
 section 3.2 in a generic way, as this task can be used in many different ways
 depending on the configuration set to it.
 
-## Component Configuration
+### Component Configuration
 
 As explained in section 3.2.1 the Sender.lvclass requires a *\*.xml* file to
 specify the configuration of the task. For this specific case, the used
@@ -28,12 +28,12 @@ changes. The values that must be maintained are:
 
 -   ReadDataFromTCP: this must be set to TRUE.
 
-## Sender.lvclass
+### Sender.lvclass
 
 This class when initialized launches a task that contains a TCP client. The
 class main elements are explained in the following sections.
 
-### Configuration file explained
+#### Configuration file explained
 
 This task requires from a configuration file for initialization, in*\*.xml*
 format that contains the following sections:
@@ -63,7 +63,7 @@ format that contains the following sections:
     check connection timeout frequency and publishes an event with the received
     data.
 
-### Task process
+#### Task process
 
 This task was created using the NI GOOP Developing Suite, this task is object
 oriented and the communication between methods is done using queues and user
@@ -72,11 +72,11 @@ The loop used for CMD reception and for TCP listening, see Figure \ref{figureone
 
 ![Sender.lvclass_Process.vi block diagram\label{figureone8b66f61d71b3541ebd69adacf70551e6}](../Resources/figures/8b66f61d71b3541ebd69adacf70551e6.png)
 
-### Task methods
+#### Task methods
 
 Here the available methods for this task are explained.
 
-#### Sender_Init
+##### Sender_Init
 
 Init the sender TCP class.
 
@@ -85,32 +85,32 @@ specified in the path
 
 ![Sender.lvclass_Sender_Init.vi context help.\label{figuretwo051a2e73e70264de756807e6fb1f596d}](../Resources/figures/051a2e73e70264de756807e6fb1f596d.png)
 
-#### CleanUp
+##### CleanUp
 
 CleanUp the sender TCP class.
 
 ![Sender.lvclass_CleanUp.vi context help.\label{figurethree5a345beac8a3e935f25b639ea22db54e}](../Resources/figures/5a345beac8a3e935f25b639ea22db54e.png)
 
-#### ControlProcessWindow
+##### ControlProcessWindow
 
 This VI is used to show or hide the process front panel. Depending on the
 ShowProcessWindow control value.
 
 ![Sender.lvclass_ControlProcessWindow.vi context help.\label{figurefoura3550841e831fb3c2a014f57f2593b32}](../Resources/figures/a3550841e831fb3c2a014f57f2593b32.png)
 
-#### GetConnected
+##### GetConnected
 
 Check if the sender is connected to the TCP server
 
 ![Sender.lvclass_GetConnected.vi context help.\label{figurefive6ff59eaeefc59fd553434273b7485b4e}](../Resources/figures/6ff59eaeefc59fd553434273b7485b4e.png)
 
-#### SendCloseConn
+##### SendCloseConn
 
 Send the command to the process to close the connection.
 
 ![Sender.lvclass_SendCloseConn.vi context help.\label{figuresix7d6ff118a7d1d2b138d7296f20add9b2}](../Resources/figures/7d6ff118a7d1d2b138d7296f20add9b2.png)
 
-#### SendString
+##### SendString
 
 This VI sends the "SendString In" message through TCP and waits for a response
 message.
@@ -129,27 +129,27 @@ obtained as "Response": Fault when sending data
 
 ![Sender.lvclass_SendString.vi context help.\label{figureseven5e0aaffd386f4275151785f5d4d5e585}](../Resources/figures/5e0aaffd386f4275151785f5d4d5e585.png)
 
-### CMD Reception loop
+#### CMD Reception loop
 
 This loop receives the CMDs from the public methods and executes the required
 actions depending on the received command. This loop has a state for each method
 as well as some other states used for loop managing, each state is explained in
 the next sections.
 
-#### Init
+##### Init
 
 Here the local variables are initialized to the default values.
 
 ![Sender.lvclass_Process.vi Init\label{figureeight2d08352ebc2451865f650d8c4b9dd251}](../Resources/figures/2d08352ebc2451865f650d8c4b9dd251.png)
 
-#### Idle
+##### Idle
 
 This state is executed constantly after executing every new CMD, here the events
 created at the methods are received and executed in the next iteration.
 
 ![Sender.lvclass_Process.vi Idle\label{figurenine743a2f92dbb5039388a081f74391a8a9}](../Resources/figures/743a2f92dbb5039388a081f74391a8a9.png)
 
-#### Timeout
+##### Timeout
 
 This state is executed when the CheckConnection time ms time is passed without
 any new commands. When this happens the case Timeout is executed and depending
@@ -169,19 +169,19 @@ on the configuration it does:
 
 ![Sender.lvclass_Process.vi connection not OK\label{figuretwelve1be04df075f3f54aa02c427bd084055d}](../Resources/figures/1be04df075f3f54aa02c427bd084055d.png)
 
-#### CMD-ShowWindow
+##### CMD-ShowWindow
 
 This state is used to show the front panel of the process.
 
 ![Sender.lvclass_Process.vi CMD-ShowWindow\label{figurethirteenb71badfccde11bb93fb6f36633d84229}](../Resources/figures/b71badfccde11bb93fb6f36633d84229.png)
 
-#### CMD-HideWindow
+##### CMD-HideWindow
 
 This state is used to hide the front panel of the process.
 
 ![Sender.lvclass_Process.vi CMD-HideWindow\label{figurefourteen5aa1b581bea9842f60e7b1d8f75f8d90}](../Resources/figures/5aa1b581bea9842f60e7b1d8f75f8d90.png)
 
-#### CMD-SendString
+##### CMD-SendString
 
 This case corresponds to the public method SendString, here the message
 specified to the method is sent over TCP. Depending on the configuration:
@@ -197,35 +197,35 @@ specified to the method is sent over TCP. Depending on the configuration:
 
 ![Sender.lvclass_Process.vi block CMD-SendString wait for TCP response\label{figuresixteeneb10377e7b097486e35430db315340c4}](../Resources/figures/eb10377e7b097486e35430db315340c4.png)
 
-#### CMD-Connect
+##### CMD-Connect
 
 This case opens the TCP connection to the TCP server, this case is called by the
 reconnect private method used within the task.
 
 ![Sender.lvclass_Process.vi CMD-Connect\label{figureseventeenc1c7c4368482d4e6c692fbc766736d2b}](../Resources/figures/c1c7c4368482d4e6c692fbc766736d2b.png)
 
-#### CMD-CloseConnection
+##### CMD-CloseConnection
 
 This case corresponds to the public method SendCloseConn, here the TCP
 connection is closed.
 
 ![Sender.lvclass_Process.vi CMD-CloseConnection\label{figureeighteen0663c541a8cfe02851bee573e1185132}](../Resources/figures/0663c541a8cfe02851bee573e1185132.png)
 
-#### CMD-GetConnected
+##### CMD-GetConnected
 
 This case corresponds to the public method GetConnected, here the status of the
 TCP connection is sent to the public method as a response in a queue.
 
 ![Sender.lvclass_Process.vi CMD-GetConnected\label{figurenineteen0863454e6f316c874bafe9e3f0500609}](../Resources/figures/0863454e6f316c874bafe9e3f0500609.png)
 
-#### CMD-shutdown
+##### CMD-shutdown
 
 This case is used to stop the task, called by the cleanup, here if the TCP
 connection is still open it is closed. After that the task stops.
 
 ![Sender.lvclass_Process.vi CMD-Shutdown\label{figuretwenty4004a4695f398916c1e6675b6a88524e}](../Resources/figures/4004a4695f398916c1e6675b6a88524e.png)
 
-#### Error
+##### Error
 
 This case is used when there is an error in the error line, here the error from
 the error line is cleared and if the TCP connection was active it is closed and

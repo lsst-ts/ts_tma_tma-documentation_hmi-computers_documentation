@@ -1,4 +1,4 @@
-# Introduction
+# Commands and Events Management
 
 This document contains the different components related to the commands and
 events from the TMA that are:
