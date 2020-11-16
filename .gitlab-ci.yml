@@ -9,8 +9,8 @@ variables:
 develop_generate:
   stage: develop_generate
   image: bsantamaria/pandoc-extended
-#  only:
-#    - develop
+  only:
+    - develop
   script:
     - ls -la
     - ./generate_pdf $CI_COMMIT_SHORT_SHA

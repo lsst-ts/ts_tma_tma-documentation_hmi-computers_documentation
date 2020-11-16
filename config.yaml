@@ -23,8 +23,8 @@ variables:
 
 # Set the appropriate metadata
 metadata:
-  title: 'HMI Software Documentation'
-  subtitle: 'LSST'
+  title: 'LSST HMI Software Documentation'
+  subtitle: ''
   author: 'Julen Garcia'
   lang: en-EN
 
