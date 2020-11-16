@@ -1,8 +1,8 @@
-# Generic Window #TODO: to be updated
+### Generic Window #TODO: to be updated
 
 Explain the most generic window to avoid repeating in the following points.
 
-## CMDs
+#### CMDs
 
 List the CMDs available for this window. This generic window has no CMDs, but
 each of them will have a list.
@@ -10,48 +10,48 @@ each of them will have a list.
 Explain how CMDs are sent to the PXI using the CppAppCommand.lvclass and its
 childs.
 
-## Front panel
+#### Front panel
 
 Explain the layout of the windows, the generic one, the specific ones will be
 explained in each chapter.
 
-### Monitoring
+##### Monitoring
 
 Explain indicators and controls of this area.
 
-#### Shortcuts if existing
+###### Shortcuts if existing
 
 Tell how to identify if there are or not and explain what happens if you click
 on them.
 
-### Control
+##### Control
 
 Explain indicators and controls of this area, mainly these are buttons and
 numeric indicators, but there are exceptions.
 
-### Block Diagram
+##### Block Diagram
 
 Explain mandatory inputs/outputs and events a window must have to work properly
 with the window loading.
 
-#### Init & Exit Actions
+###### Init & Exit Actions
 
 Explain generic init and exit actions, specific ones will be explained in each
 window.
 
-#### Loops
+###### Loops
 
 Explain the generic loops that most of the windows have, any additional loops
 will be explained on each window.
 
-#### Event structure events
+###### Event structure events
 
 Explain the generic events that all the windows must contain, specific events
 will be explained in each individual case.
 
 Explain sequences for each CMD.
 
-#### Window Movement Telemetry
+###### Window Movement Telemetry
 
 Some windows have the option to save data for each movement. The idea is to have
 a small file with data saved that allows a faster tune of that subsystem.
