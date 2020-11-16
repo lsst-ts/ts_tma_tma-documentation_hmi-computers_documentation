@@ -1,4 +1,4 @@
-## Telemetry Management
+# Telemetry Management
 
 The telemetry must perform the following actions:
 
@@ -30,9 +30,9 @@ telemetry. These files are:
 - Window Telemetry configuration file: defines the telemetry to display in
     each window, default name: “HMIWindowsTelemetryVariables.ini”.
 
-### Telemetry configuration
+## Telemetry configuration
 
-#### Topic Telemetry configuration file
+### Topic Telemetry configuration file
 
 For telemetry definition there is a configuration file
 “*TelemetryTopicsConfiguration.ini*” in the configuration folder that defines
@@ -127,7 +127,7 @@ publication as a topic. For configuring this there are two values:
 - TopicFrequencyMultiple50ms: this value is used to configure the publication
     frequency of the topic.
 
-#### Window Telemetry configuration file
+### Window Telemetry configuration file
 
 For window telemetry definition there is a configuration file
 “*HMIWindowsTelemetryVariables.ini*” in the configuration folder that defines
@@ -190,24 +190,24 @@ An example for the Azimuth cAble wrap is as follows:
 
 >   *Int64 Array Telemetry Variables.\<size(s)\> = "0"*
 
-#### Telemetry Configuration from Files Initialization
+### Telemetry Configuration from Files Initialization
 
 For reading and initializing the telemetry configuration from the previous
 mentioned 2 files there is a VI. This VI is explained in this section as it is
 assumed to be important.
 
-##### VI description
+#### VI description
 
 Read the configuration files for the telemetry and initialize the FGV that will
 save the configuration for each execution.
 
 ![ManageTelemetryConfiguration.lvlib_InitTelemetryConfigurationFromFiles.vi context help.\label{figureone7befdc9e76a314260fc13051309ae835}](../Resources/figures/7befdc9e76a314260fc13051309ae835.png)
 
-##### Block diagram
+#### Block diagram
 
 ![ManageTelemetryConfiguration.lvlib_InitTelemetryConfigurationFromFiles.vi block diagram 1.\label{figuretwo1a954192cffd0f4ef5a9ac3e5c9cfeb2}](../Resources/figures/1a954192cffd0f4ef5a9ac3e5c9cfeb2.png)
 
-##### List of subVIs
+#### List of subVIs
 
 - GetTelemetryURLPath.vi: Gets the telemetry logging directory path and
     creates if missing
@@ -280,7 +280,7 @@ save the configuration for each execution.
 
 ![Read Key (Variant)__ogtk.vi context help.\label{figurefourteenef7f95b8a83143d2eb6da1cc37e37162}](../Resources/figures/ef7f95b8a83143d2eb6da1cc37e37162.png)
 
-### Telemetry logging task
+## Telemetry logging task
 
 This task is the one obtaining the data from the PXI. This task does two main
 things:
@@ -327,7 +327,7 @@ file are:
     With the default value of 3600, means that there will be unzipped files for
     the last hour.
 
-#### Task process
+### Task process
 
 This task was created using the NI GOOP Developing Suite, this task is object
 oriented and the communication between methods is done using queues and user
@@ -352,25 +352,25 @@ events. The task main is contained in the process.vi, here there are 6 loops.
 
 ![Telemetry Logging task Process\label{figurefifteen7293ce79e1e4a1065905e07662a6e44b}](../Resources/figures/7293ce79e1e4a1065905e07662a6e44b.png)
 
-##### CMD Reception loop
+#### CMD Reception loop
 
 This loop receives the CMDs from the methods and passes the required actions to
 the corresponding loop.
 
-###### Init
+##### Init
 
 Here the initialization actions are executed.
 
 ![TelemetryLogingTask.lvclass_Process.vi Init.\label{figuresixteen8311c37d8944346ab1740963faa90d5e}](../Resources/figures/8311c37d8944346ab1740963faa90d5e.png)
 
-###### Idle
+##### Idle
 
 This state is executed constantly after executing every new CMD, here the events
 created at the methods are received and executed in the next iteration.
 
 ![TelemetryLogingTask.lvclass_Process.vi Idle.\label{figureseventeen30bfc3bdc24eac36d8a005f25bfcfce9}](../Resources/figures/30bfc3bdc24eac36d8a005f25bfcfce9.png)
 
-###### Timeout
+##### Timeout
 
 This state is executed when there is something that must be executed in the
 specified timeout of the Idle state event structure.
@@ -379,26 +379,26 @@ specified timeout of the Idle state event structure.
 
 ![TelemetryLogingTask.lvclass_Process.vi Timeout.\label{figurenineteene7d944f4767feb45d0aad87d5ef6afdb}](../Resources/figures/e7d944f4767feb45d0aad87d5ef6afdb.png)
 
-###### CMD-ShowWindow
+##### CMD-ShowWindow
 
 This state is used to show the front panel of the process.
 
 ![Loop states: CMD-ShowWindow\label{figuretwenty0ad63204c3947d40e72ec4484c372f55}](../Resources/figures/0ad63204c3947d40e72ec4484c372f55.png)
 
-###### CMD-HideWindow
+##### CMD-HideWindow
 
 This state is used to hide the front panel of the process.
 
 ![Loop states: CMD-HideWindow\label{figuretwenty-one7c0492c6c1e98121de21d12fb8c94a15}](../Resources/figures/7c0492c6c1e98121de21d12fb8c94a15.png)
 
-###### CMD-AddVariable
+##### CMD-AddVariable
 
 Verify if the variable exists, if not the variable is connected and added other
 ways not.
 
 ![TelemetryLogingTask.lvclass_Process.vi CMD-AddVariable.\label{figuretwenty-two96f34d720e2ab198301ac52f9de37f39}](../Resources/figures/96f34d720e2ab198301ac52f9de37f39.png)
 
-###### CMD-AddVariableHHD
+##### CMD-AddVariableHHD
 
 Verify if the variable exists, if not the variable is connected but NOT ADDED,
 this would be made by another method that will add only the variables needed for
@@ -406,7 +406,7 @@ the loaded window.
 
 ![TelemetryLogingTask.lvclass_Process.vi CMD-AddVariableHHD.\label{figuretwenty-three0675042b5005091b18d50cdf6e43b3a8}](../Resources/figures/0675042b5005091b18d50cdf6e43b3a8.png)
 
-###### CMD-MonitorVariablesHHD
+##### CMD-MonitorVariablesHHD
 
 Verify if the variable exists, if not the variable is added other ways not. If
 monitor is true, the variable is added for monitoring if false its removed from
@@ -414,45 +414,45 @@ monitoring.
 
 ![TelemetryLogingTask.lvclass_Process.vi 3.2.1.1.8CMD-MonitorVariablesHHD.\label{figuretwenty-four8424653992a843cf12dd11c04b66713e}](../Resources/figures/8424653992a843cf12dd11c04b66713e.png)
 
-###### CMD-Adquisition
+##### CMD-Adquisition
 
 Manage the variables acquisition, start or stop it.
 
 ![TelemetryLogingTask.lvclass_Process.vi CMD-Adquisition.\label{figuretwenty-fiveb28672a598875ebbe1650a921544bd4a}](../Resources/figures/b28672a598875ebbe1650a921544bd4a.png)
 
-###### CMD-ChangeSaveFilePath
+##### CMD-ChangeSaveFilePath
 
 Change the path for saving the telemetry, send the new path to the Data Saving
 Loop.
 
 ![TelemetryLogingTask.lvclass_Process.vi CMD-ChangeSaveFilePath.\label{figuretwenty-six9c2020392132ea2f8398b87997cc7f45}](../Resources/figures/9c2020392132ea2f8398b87997cc7f45.png)
 
-###### CMD-SaveData
+##### CMD-SaveData
 
 Manage the data saving, start or stop it.
 
 ![TelemetryLogingTask.lvclass_Process.vi CMD-SaveData.\label{figuretwenty-seven39b15447144c594574394b2fd21d98d2}](../Resources/figures/39b15447144c594574394b2fd21d98d2.png)
 
-###### CMD-Error
+##### CMD-Error
 
 Get the error and set it to the error line, this will make the task to go to the
 Error case and process it there.
 
 ![TelemetryLogingTask.lvclass_Process.vi CMD-Error.\label{figuretwenty-eight62b194306cbe46243a7474ffd683cd3c}](../Resources/figures/62b194306cbe46243a7474ffd683cd3c.png)
 
-###### Error
+##### Error
 
 Send the error from the error line to the Error Task.
 
 ![TelemetryLogingTask.lvclass_Process.vi Error.\label{figuretwenty-nine6785cc72b418dad3d25e4ae274e5ee94}](../Resources/figures/6785cc72b418dad3d25e4ae274e5ee94.png)
 
-###### CMD-Shutdown
+##### CMD-Shutdown
 
 Here the actions to shutdown the task are executed.
 
 ![TelemetryLogingTask.lvclass_Process.vi CMD-Shutdown.\label{figurethirty26eadf8e759401cd24c2c7b5f59aed90}](../Resources/figures/26eadf8e759401cd24c2c7b5f59aed90.png)
 
-##### Data Acquiring Loop
+#### Data Acquiring Loop
 
 The Data acquiring loop, is the one reading the network shared variables from
 the PXI. This loop then sends the data to the other loops to manage it as
@@ -460,27 +460,27 @@ intended in each case.
 
 ![Data Acquiring loop\label{figurethirty-one740e407d42cb98219f98ec3b3bf912d9}](../Resources/figures/740e407d42cb98219f98ec3b3bf912d9.png)
 
-##### Data Saving Loop
+#### Data Saving Loop
 
 The Data saving loop, is the one that writes the acquired data to TDMS.
 
 ![Data Saving Loop\label{figurethirty-twobca3b2d13dea126c1c7a08e65b886447}](../Resources/figures/bca3b2d13dea126c1c7a08e65b886447.png)
 
-##### Check Variables Connection Loop
+#### Check Variables Connection Loop
 
 The Check variables connection loop, this loop is used to reconnect the
 variables that may fail when read in the Data acquiring loop.
 
 ![Check Variables Connection Loop\label{figurethirty-three38506fa5d1e4b69bfb42127ae0c034a1}](../Resources/figures/38506fa5d1e4b69bfb42127ae0c034a1.png)
 
-##### Update Actual Data Loop
+#### Update Actual Data Loop
 
 Update Actual Data loop, this loop gets the data from the Data acquiring loop
 and stores it into a DVR to be accessible by other tasks.
 
 ![Update Actual Data loop\label{figurethirty-four5850dea623cf2e23c01cf8b02e1135e0}](../Resources/figures/5850dea623cf2e23c01cf8b02e1135e0.png)
 
-##### Send Actual Data Event loop
+#### Send Actual Data Event loop
 
 Send Actual Data Event loop, this event gets the data from the Data acquiring
 loop and publishes an event with the DBL and DBLarray data types. This event is
@@ -488,31 +488,31 @@ used in the windows only, to plot the values into graphs.
 
 ![Send Actual Data Event loop\label{figurethirty-five072e7885289d9cdf9b59e1ca09da795b}](../Resources/figures/072e7885289d9cdf9b59e1ca09da795b.png)
 
-#### Task methods
+### Task methods
 
 Here the available methods for this task are explained.
 
-##### AddVariableMethodChoice
+#### AddVariableMethodChoice
 
 This method selects which add variable method must be used depending on the
 current device Global variable (EUI or HHD).
 
 ![TelemetryLogingTask.lvclass_AddVariableMethodChoice.vi context help.\label{figurethirty-six53be36f00dc8796f1c8f39eac263ce0a}](../Resources/figures/53be36f00dc8796f1c8f39eac263ce0a.png)
 
-##### AssignInitClasses
+#### AssignInitClasses
 
 Here the telemetry variable objects are initialized using the
 TelemetryTopicDefinitions.
 
 ![TelemetryLogingTask.lvclass_AssignInitClasses.vi context help.\label{figurethirty-seven9f8244908aae0722aa7189e48e01411c}](../Resources/figures/9f8244908aae0722aa7189e48e01411c.png)
 
-##### ChangeFileSavingPath
+#### ChangeFileSavingPath
 
 Change the file path to save the telemetry data
 
 ![TelemetryLogingTask.lvclass_ChangeFileSavingPath.vi context help.\label{figurethirty-eightf0a19ed5efd534092c4cf72ee77df262}](../Resources/figures/f0a19ed5efd534092c4cf72ee77df262.png)
 
-##### CleanUp
+#### CleanUp
 
 execute the clean up actions for the task
 
@@ -526,61 +526,61 @@ execute the clean up actions for the task
 
 ![TelemetryLogingTask.lvclass_CleanUp.vi context help.\label{figurethirty-nine59d21d74e8eb543d6ada5126d42eac44}](../Resources/figures/59d21d74e8eb543d6ada5126d42eac44.png)
 
-##### GetAllTelemetry
+#### GetAllTelemetry
 
 Returns the data from the actualDataDVR
 
 ![TelemetryLogingTask.lvclass_GetAllTelemetryData.vi context help.\label{figurefortyf87d89733b4735a12ba8402da31d3385}](../Resources/figures/f87d89733b4735a12ba8402da31d3385.png)
 
-##### GetTelemetryDataURL
+#### GetTelemetryDataURL
 
 Returns the data from the queue
 
 ![TelemetryLogingTask.lvclass_GetTelemetryDataURL.vi context help.\label{figureforty-one8677c0910f62436c759c00f690dc31b7}](../Resources/figures/8677c0910f62436c759c00f690dc31b7.png)
 
-##### ManageAdquisition
+#### ManageAdquisition
 
 Manages the adquisition of the telemetry task
 
 ![TelemetryLogingTask.lvclass_ManageAdquisition.vi context help.\label{figureforty-two5c56b96c5e6c7b4f0a6976dbae0e6983}](../Resources/figures/5c56b96c5e6c7b4f0a6976dbae0e6983.png)
 
-##### ManageSaveData
+#### ManageSaveData
 
 Turns on or off the telemetry data saving to file (tdms).
 
 ![TelemetryLogingTask.lvclass_ManageSaveData.vi context help.\label{figureforty-three34e43cdc74247e08a48a2f92165ace62}](../Resources/figures/34e43cdc74247e08a48a2f92165ace62.png)
 
-##### MonitorVariablesHHD
+#### MonitorVariablesHHD
 
 Adds a variable to the telemetry task for the HHD system
 
 ![TelemetryLogingTask.lvclass_MonitorVariablesHHD.vi context help.\label{figureforty-fourb95840eb2a61e258a9b2e0cb5efb1cb1}](../Resources/figures/b95840eb2a61e258a9b2e0cb5efb1cb1.png)
 
-##### Read TelemetryEvent
+#### Read TelemetryEvent
 
 Gets the TelemetryEvent reference from the class object
 
 ![TelemetryLogingTask.lvclass_Read TelemetryEvent.vi context help.\label{figureforty-five66df1ee3843d6e7484785398e7f43a8c}](../Resources/figures/66df1ee3843d6e7484785398e7f43a8c.png)
 
-##### TelemetryFilePathCreation
+#### TelemetryFilePathCreation
 
 Generates the path to save the telemetry data for each 10 minutes
 
 ![TelemetryLogingTask.lvclass_TelemetryFilePathCreation.vi contexthelp.\label{figureforty-sixecd57eb2f56ddaff20b6ab61bc26755f}](../Resources/figures/ecd57eb2f56ddaff20b6ab61bc26755f.png)
 
-##### TelemetryLogingTask_Init
+#### TelemetryLogingTask_Init
 
 Initialize the telemetry process. Also includes the compression of old telemetry
 files (TDMS) onto zip files.
 
 ![TelemetryLogingTask.lvclass_TelemetryLogingTask_Init.vi context help.\label{figureforty-sevend887f610e8f5256f3439d49b30370af3}](../Resources/figures/d887f610e8f5256f3439d49b30370af3.png)
 
-### TCP Telemetry task
+## TCP Telemetry task
 
 This task is responsible of sending all the needed telemetry to the CSC over
 TCP.
 
-#### Task process
+### Task process
 
 This task was created using the NI GOOP Developing Suite, this task is object
 oriented and the communication between methods is done using queues and user
@@ -590,25 +590,25 @@ This process has only one instance that manages all the telemetry data.
 
 ![TCP Telemetry task\label{figureforty-eight57911673c165a91823df05097d5c7442}](../Resources/figures/57911673c165a91823df05097d5c7442.png)
 
-##### CMD Reception loop
+#### CMD Reception loop
 
 This loop receives the CMDs from the methods and passes the required actions to
 the publishing loop.
 
-###### Init
+##### Init
 
 Here the initialization actions are executed.
 
 ![Loop states: Init\label{figureforty-nine34c5e7d190b5f2b833b64116c31a6ad0}](../Resources/figures/34c5e7d190b5f2b833b64116c31a6ad0.png)
 
-###### Idle
+##### Idle
 
 This state is executed constantly after executing every new CMD, here the events
 created at the methods are received and executed in the next iteration.
 
 ![Loop states: Idle\label{figurefifty40f48445aaeade20137616f190917a6b}](../Resources/figures/40f48445aaeade20137616f190917a6b.png)
 
-###### Timeout
+##### Timeout
 
 This state is executed when there is something that must be executed in the
 specified timeout of the Idle state event structure, see Figure \ref{figurefifty-onef7565b74148bf04cd1f4f1fb69d642c1}.
@@ -617,33 +617,33 @@ specified timeout of the Idle state event structure, see Figure \ref{figurefifty
 
 ![Loop states: Timeout\label{figurefifty-two1c6be57a00e3acfe2cfb544b4d0c8a35}](../Resources/figures/1c6be57a00e3acfe2cfb544b4d0c8a35.png)
 
-###### CMD-ShowWindow
+##### CMD-ShowWindow
 
 This state is used to show the front panel of the process.
 
 ![Loop states: CMD-ShowWindow\label{figurefifty-three2fc66861285c454098d66de610dc1d43}](../Resources/figures/2fc66861285c454098d66de610dc1d43.png)
 
-###### CMD-HideWindow
+##### CMD-HideWindow
 
 This state is used to hide the front panel of the process.
 
 ![Loop states: CMD-HideWindow\label{figurefifty-fourb2c602d1f37e364f2519be97641fca53}](../Resources/figures/b2c602d1f37e364f2519be97641fca53.png)
 
-###### CMD-StartPublish
+##### CMD-StartPublish
 
 This state is executed when the StartPublish method is used. Here the TCP
 publishing loop is started.
 
 ![Loop states: StartPublish\label{figurefifty-five07eecdfe1b0bf76d578e653d2dc99cb0}](../Resources/figures/07eecdfe1b0bf76d578e653d2dc99cb0.png)
 
-###### CMD-StopPublish
+##### CMD-StopPublish
 
 This state is executed when the StopPublish method is used. Here the TCP
 publishing loop is stopped.
 
 ![Loop states: CMD-StopPublish\label{figurefifty-six7af6afa7a6f49eb99ab7e6dd1209a961}](../Resources/figures/7af6afa7a6f49eb99ab7e6dd1209a961.png)
 
-###### SendError
+##### SendError
 
 This state is executed when the SendError CMD is received, this CMD is sent by
 the TCP publishing loop at the error handling state. Here the received error is
@@ -651,21 +651,21 @@ set to the error line to enter the error case in the next iteration.
 
 ![Loop states: CMD-SendError\label{figurefifty-seven2b4ce927215df8a95583195975f4b0f8}](../Resources/figures/2b4ce927215df8a95583195975f4b0f8.png)
 
-###### Error
+##### Error
 
 This state is reached when an error occurred at the loop or is received from the
 publishing loop. Here the error is posted to the error task.
 
 ![Loop states: Error\label{figurefifty-eight222a40c7a37a1bd9230765494fd30140}](../Resources/figures/222a40c7a37a1bd9230765494fd30140.png)
 
-###### CMD-Shutdown
+##### CMD-Shutdown
 
 This state is reached when the shutdown CMD is received. This loop is used to
 stop the TCP publishing loop.
 
 ![Loop states: CMD-Shutdown\label{figurefifty-nineae4724af78adecc36068d2740940da76}](../Resources/figures/ae4724af78adecc36068d2740940da76.png)
 
-#####  TCP Publishing loop
+####  TCP Publishing loop
 
 This loop is responsible of publishing the telemetry over TCP. This loop
 contains a very simple state machine with 5 states, each of them is explained in
@@ -673,14 +673,14 @@ the upcoming sections.
 
 ![Publishing loop\label{figuresixtyd5b66fb6e3281d51754fc31ae2d32615}](../Resources/figures/d5b66fb6e3281d51754fc31ae2d32615.png)
 
-###### Init
+##### Init
 
 This state is launched at start. Here the DVR with the loop data is initialized
 to default values. The next state is launched: Wait.
 
 ![Loop states: Init\label{figuresixty-one3a56ace2e388ce99cae68b6dea2e23a2}](../Resources/figures/3a56ace2e388ce99cae68b6dea2e23a2.png)
 
-###### Wait
+##### Wait
 
 Here the data for the loop is read from the DVR.
 
@@ -690,7 +690,7 @@ Here the data for the loop is read from the DVR.
 
 ![Loop states: Wait\label{figuresixty-two1421f7884dabfe8d9030bb9180114d1c}](../Resources/figures/1421f7884dabfe8d9030bb9180114d1c.png)
 
-###### Read&PublishData
+##### Read&PublishData
 
 Here the data for the loop is read from the DVR and the main task of this loop
 is done: read telemetry and publish it over TCP.
@@ -701,7 +701,7 @@ is done: read telemetry and publish it over TCP.
 
 ![Loop states: Read&PublishData\label{figuresixty-threedf83acb1801c5dbd2132c53d86849c98}](../Resources/figures/df83acb1801c5dbd2132c53d86849c98.png)
 
-###### ErrorHandling
+##### ErrorHandling
 
 The state machine guard launches this state if there is an error at the error
 line from the previous state. Here the error is posted to the CMD reception
@@ -709,18 +709,18 @@ loop.
 
 ![Loop states: ErrorHandling\label{figuresixty-four87c460727b18724299503ccd26c36aff}](../Resources/figures/87c460727b18724299503ccd26c36aff.png)
 
-###### Exit
+##### Exit
 
 This state is launched from the guard and launches when the loop data DVR exit
 is set to true. Here the loop is stopped.
 
 ![Loop states: Exit\label{figuresixty-fivee3439cbac99d63a060c2872de48c6603}](../Resources/figures/e3439cbac99d63a060c2872de48c6603.png)
 
-#### Task methods
+### Task methods
 
 Here the available methods for this task are explained.
 
-##### TCP_Telemetry_Init 
+#### TCP_Telemetry_Init 
 
 This VI is used to launch the process, to do so some inputs are required:
 
@@ -734,39 +734,39 @@ This VI is used to launch the process, to do so some inputs are required:
 
 ![Task method: TCP_Telemetry_Init\label{figuresixty-sixfaa4e9a776a49e7524458218e575eb42}](../Resources/figures/faa4e9a776a49e7524458218e575eb42.png)
 
-##### CleanUp
+#### CleanUp
 
 This VI is used to stop the task and release all the references generated for
 this task.
 
 ![Task method: CleanUp\label{figuresixty-sevene390bc701734422389895c0d5884c582}](../Resources/figures/e390bc701734422389895c0d5884c582.png)
 
-##### ControlProcessWindow
+#### ControlProcessWindow
 
 This VI is used to show or hide the process front panel. Depending on the
 ShowProcessWindow control value.
 
 ![Task method: ControlProcessWindow\label{figuresixty-eight42d6a3e3c5bc8c2b4adb6aa2d8bc87d7}](../Resources/figures/42d6a3e3c5bc8c2b4adb6aa2d8bc87d7.png)
 
-##### StartPublish 
+#### StartPublish 
 
 This VI is used to start publishing data over TCP.
 
 ![Task method: StartPublish\label{figuresixty-ninecc4a2c2fa63eb088ad2a7e9c8a6d6123}](../Resources/figures/cc4a2c2fa63eb088ad2a7e9c8a6d6123.png)
 
-##### StopPublish 
+#### StopPublish 
 
 This VI is used to start publishing data over TCP.
 
 ![Task method: StopPublish\label{figureseventyf9c0e562997f5a97f2c1362d44cf9d86}](../Resources/figures/f9c0e562997f5a97f2c1362d44cf9d86.png)
 
-##### CheckObjectInitialized
+#### CheckObjectInitialized
 
 This VI is used to check if the object was initialized or not.
 
 ![Task method: CheckObjectInitialized\label{figureseventy-one518e51182596fd253a1819ac49ceb70e}](../Resources/figures/518e51182596fd253a1819ac49ceb70e.png)
 
-### Testing
+## Testing
 
 There is a project created to test that both tasks work properly. This project
 is located inside the “*HMIComputers*” repository inside the TCP_Telemetry
