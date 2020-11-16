@@ -70,7 +70,7 @@ Interface) and the HHD (Handheld Device) labels. It contains important code that
 makes the system work properly, as well as allowing advanced users to adjust the
 system or execute maintenance operations.
 
-![Communications structure between the different components of the MainControl System (MCS)\label{figureone350f30df820b4ef01f38b7cadcba9985}](../Resources/350f30df820b4ef01f38b7cadcba9985.png)
+![Communications structure between the different components of the MainControl System (MCS)\label{figureone350f30df820b4ef01f38b7cadcba9985}](../Resources/figures/350f30df820b4ef01f38b7cadcba9985.png)
 
 Focusing only in the HMI part the Figure \ref{figureone350f30df820b4ef01f38b7cadcba9985} simplifies to the Figure \ref{figuretwo3d62584b986c8ac035e591e474694ccc}, having
 the components of the HMI divided and the relation between the different
@@ -78,7 +78,7 @@ elements explained. Al the components inside the HMI Components box are coded in
 LabVIEW and compiled together as the EUI, for both the HHD and the MCC, with
 some variations as the screen size is different for each case.
 
-![Software structure, with detail in the HMI components\label{figuretwo3d62584b986c8ac035e591e474694ccc}](../Resources/3d62584b986c8ac035e591e474694ccc.png)
+![Software structure, with detail in the HMI components\label{figuretwo3d62584b986c8ac035e591e474694ccc}](../Resources/figures/3d62584b986c8ac035e591e474694ccc.png)
 
 As shown in Figure \ref{figuretwo3d62584b986c8ac035e591e474694ccc}, the components of the HMI are:
 
