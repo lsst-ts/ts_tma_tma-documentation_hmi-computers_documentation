@@ -532,8 +532,7 @@ subsystem, the methods in this class are:
 
 -   ResetAlarm
 
-GetEventfromTMA.lvclass
------------------------
+### GetEventfromTMA.lvclass
 
 This class is responsible of parsing the events from the TMA received by the TCP
 Client and generate the corresponding events inside the HMI application.
@@ -674,8 +673,7 @@ published and cleared for the next iteration.
 
 ![GetEVENTFromTMA.lvclass_Process.vi Error\label{figureforty-seven16549f5ba20f1abe2e0b7bb142b70442}](../Resources/figures/16549f5ba20f1abe2e0b7bb142b70442.png)
 
-TMAOMTMonitoring task
----------------------
+### TMAOMTMonitoring task
 
 To be updated
 
@@ -873,8 +871,7 @@ stop the loop and close the connection to the TMA OMT.
 
 ![Loop states: Shutdown\label{figureseventy-three8cd88c931dc08cc2714ec3df401d5a0f}](../Resources/figures/8cd88c931dc08cc2714ec3df401d5a0f.png)
 
-CommanderCheck task
--------------------
+### CommanderCheck task
 
 To be updated
 

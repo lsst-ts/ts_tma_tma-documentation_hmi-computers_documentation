@@ -409,7 +409,7 @@ There is no next state after this case.
 
 ![Server.lvclass_Process.vi Exit\label{figureonehundredthirty-eight8c9139f780eb476e4bed4698b627e0eb}](../Resources/figures/8c9139f780eb476e4bed4698b627e0eb.png)
 
-###### New Connection Manager 
+###### New Connection Manager
 
 This loop is responsible of managing the new TCP client connections. This loop
 contains a very simple state machine with 5 states, each of them is explained in
@@ -462,8 +462,7 @@ There is no next state after this case.
 
 ![Server.lvclass_Process.vi Exit\label{figureonehundredforty-three1d95653b306ff02f78c047350ec21c8f}](../Resources/figures/1d95653b306ff02f78c047350ec21c8f.png)
 
-AlarmSavingTask.lvclass
------------------------
+### AlarmSavingTask.lvclass
 
 This task manages the alarm and warning log file.
 
@@ -611,8 +610,7 @@ published and cleared for the next iteration.
 
 ![AlarmSavingTask.lvclass_Process.vi Error\label{figureonehundredfifty-eight94d26e2cc75248391e0965d35c852674}](../Resources/figures/94d26e2cc75248391e0965d35c852674.png)
 
-Alarm Recpetion Task HHD.lvclass
---------------------------------
+### Alarm Recpetion Task HHD.lvclass
 
 This class is the one used in the HHD instead of the Alarm Recpetion
 Task.lvclass. It just connects to the Alarm Recpetion Task.lvclass and requests
