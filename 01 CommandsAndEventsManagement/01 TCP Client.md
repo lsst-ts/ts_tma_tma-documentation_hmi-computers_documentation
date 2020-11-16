@@ -8,7 +8,7 @@ registered by another task to filter then and generate the proper user events
 within the application.
 
 For this component, the Sender.lvclass is used. This class is explained in
-[this section](#senderlvclass) in a generic way, as this task can be used in many different ways
+[this section](#sender.lvclass) in a generic way, as this task can be used in many different ways
 depending on the configuration set to it.
 
 ### Component Configuration
