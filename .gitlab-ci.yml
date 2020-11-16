@@ -12,7 +12,6 @@ develop_generate:
   only:
     - develop
   script:
-    - ls -la
     - ./generate_pdf $CI_COMMIT_SHORT_SHA
   artifacts:
     paths:
