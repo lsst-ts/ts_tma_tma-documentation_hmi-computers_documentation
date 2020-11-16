@@ -395,28 +395,28 @@ this timeout.
 It waits for the done response of the PXI in order to synchronize. After the
 specified timeout at the ack event a timeout error is throwed.
 
-![Cases of the consumer loop´s case structure: WaitForDone case.\label{figuretwohundredeight07fd9cb2999e02b541d0ecea67a3672a}](../Resources/figures/07fd9cb2999e02b541d0ecea67a3672a.png)
+![Cases of the consumer loop's case structure: WaitForDone case.\label{figuretwohundredeight07fd9cb2999e02b541d0ecea67a3672a}](../Resources/figures/07fd9cb2999e02b541d0ecea67a3672a.png)
 
 ####### Init Sequence
 
 This case puts the window in executing mode: disabling the possibility of
 pushing buttons and hiding the menu.
 
-![Cases of the consumer loop´s case structure: InitSequence case.\label{figuretwohundrednine4ad159eb612954c5bc11cd4aa47c4d79}](../Resources/figures/4ad159eb612954c5bc11cd4aa47c4d79.png)
+![Cases of the consumer loop's case structure: InitSequence case.\label{figuretwohundrednine4ad159eb612954c5bc11cd4aa47c4d79}](../Resources/figures/4ad159eb612954c5bc11cd4aa47c4d79.png)
 
 ####### End Sequence
 
 This case puts the window back into normal mode: hides the ack progress bar,
 enables the controls and shows the menu.
 
-![Cases of the consumer loop´s case structure: EndSequence case.\label{figuretwohundredtenf9d38fc1903263c02c7fe1ca7f81ba9b}](../Resources/figures/f9d38fc1903263c02c7fe1ca7f81ba9b.png)
+![Cases of the consumer loop's case structure: EndSequence case.\label{figuretwohundredtenf9d38fc1903263c02c7fe1ca7f81ba9b}](../Resources/figures/f9d38fc1903263c02c7fe1ca7f81ba9b.png)
 
 ####### Stop VI
 
 This case is used to stop the current loop. Here the Consumer Loop queue is
 released.
 
-![Cases of the consumer loop´s case structure: StopVI case.\label{figuretwohundredeleven7de9017618651709ec41755226e03c12}](../Resources/figures/7de9017618651709ec41755226e03c12.png)
+![Cases of the consumer loop's case structure: StopVI case.\label{figuretwohundredeleven7de9017618651709ec41755226e03c12}](../Resources/figures/7de9017618651709ec41755226e03c12.png)
 
 ###### Update Graph Loop
 
