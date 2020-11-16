@@ -6,12 +6,12 @@ received from it. This is done using the TCP Client component and some other
 tasks that will be explained in this section. This component has two main
 different parts:
 
--   Command sending: this means generating the TCP message to send to the TMA
+- Command sending: this means generating the TCP message to send to the TMA
     using the TCP Client. This is done using the CppAppCommand.lvclass. This
     class is the one that generates the TCP message for each specific command
     and sends them to the TMA using the TCP Client.
 
--   Event reception: this means getting the messages from the TMA over the TCP
+- Event reception: this means getting the messages from the TMA over the TCP
     Client and generating the corresponding events inside the HMI application.
     This is done using the GetEVENTFromTMA.lvclass. This class is responsible of
     parsing the events from the TMA received by the TCP Client and generate the
@@ -20,10 +20,10 @@ different parts:
 In addition to these two classes there are two other classes inside the TMA
 Commanding component. These are:
 
--   TMAOMTMonitoring.lvclass: this class is used to monitor the status of the
+- TMAOMTMonitoring.lvclass: this class is used to monitor the status of the
     TMA received in the “*StateInfo*” events.
 
--   CommanderCheck.lvclass: this class is used to monitor the actual commander
+- CommanderCheck.lvclass: this class is used to monitor the actual commander
     and generate the corresponding events to change the user interface and block
     the command sending when the actual HMI is not the commander.
 
@@ -129,408 +129,408 @@ subsystem.
 This class corresponds to the commands available for the Azimuth Cable Wrap
 subsystem, the methods in this class are:
 
--   EnableTrack
+- EnableTrack
 
--   Move
+- Move
 
--   MoveVelocity
+- MoveVelocity
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   TrackTarget
+- TrackTarget
 
 ##### CppAppACWDrivesCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth Cable Wrap
 drives subsystem, the methods in this class are:
 
--   Enable
+- Enable
 
--   ReadDriveIdent
+- ReadDriveIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   WriteDriveIdent
+- WriteDriveIdent
 
 ##### CppAppAZCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth subsystem, the
 methods in this class are:
 
--   Home
+- Home
 
--   Move
+- Move
 
--   MoveVelocity
+- MoveVelocity
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   Tracking
+- Tracking
 
 ##### CppAppAZDrivesCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth drives
 subsystem, the methods in this class are:
 
--   Enable
+- Enable
 
--   ReadDriveIdent
+- ReadDriveIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   WriteDriveIdent
+- WriteDriveIdent
 
 ##### CppAppAZThermalCMD.lvclass
 
 This class corresponds to the commands available for the Azimuth drives thermal
 subsystem, the methods in this class are:
 
--   ControlMode
+- ControlMode
 
--   ReadAZThermalIdent
+- ReadAZThermalIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   WriteAZThermalIdent
+- WriteAZThermalIdent
 
 ##### CppAppBALCMD.lvclass
 
 This class corresponds to the commands available for the Balancing subsystem,
 the methods in this class are:
 
--   Enable
+- Enable
 
--   Move
+- Move
 
--   MoveVelocity
+- MoveVelocity
 
--   ReadElementIdent
+- ReadElementIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   WriteElementIdent
+- WriteElementIdent
 
 ##### CppAppCabinet0101CMD.lvclass
 
 This class corresponds to the commands available for the Cabinet 0101 subsystem,
 the methods in this class are:
 
--   ControlMode
+- ControlMode
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
 ##### CppAppCabinetCMD.lvclass
 
 This class corresponds to the commands available for the Main Cabinet subsystem,
 the methods in this class are:
 
--   ResetAlarm
+- ResetAlarm
 
--   TrackExtTemp
+- TrackExtTemp
 
 ##### CppAppCCWCMD.lvclass
 
 This class corresponds to the commands available for the Camera Cable wrap
 subsystem, the methods in this class are:
 
--   EnableTrack
+- EnableTrack
 
--   Move
+- Move
 
--   MoveVelocity
+- MoveVelocity
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   TrackTarget
+- TrackTarget
 
 ##### CppAppCCWDrivesCMD.lvclass
 
 This class corresponds to the commands available for the Camera Cable Wrap
 drives subsystem, the methods in this class are:
 
--   Enable
+- Enable
 
--   MoveVelocity
+- MoveVelocity
 
--   ReadDriveIdent
+- ReadDriveIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   WriteDriveIdent
+- WriteDriveIdent
 
 ##### CppAppCommaderCMD.lvclass
 
 This class corresponds to the commands available for the Commander subsystem,
 the methods in this class are:
 
--   AskCommand
+- AskCommand
 
--   PublishOnly
+- PublishOnly
 
--   SystemReady
+- SystemReady
 
 ##### CppAppDPCMD.lvclass
 
 This class corresponds to the commands available for the Deployable Platform
 subsystem, the methods in this class are:
 
--   LockExtension
+- LockExtension
 
--   MoveVelocity
+- MoveVelocity
 
--   ReadPlatformIdent
+- ReadPlatformIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   WritePlatformIdent
+- WritePlatformIdent
 
 ##### CppAppEIBCMD.lvclass
 
 This class corresponds to the commands available for the Encoder subsystem, the
 methods in this class are:
 
--   ClearHeadsError
+- ClearHeadsError
 
--   HardwareReset
+- HardwareReset
 
--   ReadElementIdent
+- ReadElementIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   SendReferenceStartCMD
+- SendReferenceStartCMD
 
--   SendReferenceStopCMD
+- SendReferenceStopCMD
 
--   WriteElementIdent
+- WriteElementIdent
 
 ##### CppAppELCMD.lvclass
 
 This class corresponds to the commands available for the Elevation subsystem,
 the methods in this class are:
 
--   Home
+- Home
 
--   Move
+- Move
 
--   MoveVelocity
+- MoveVelocity
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   Tracking
+- Tracking
 
 ##### CppAppELDrivesCMD.lvclass
 
 This class corresponds to the commands available for the Elevation drives
 subsystem, the methods in this class are:
 
--   Enable
+- Enable
 
--   ReadDriveIdent
+- ReadDriveIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   WriteDriveIdent
+- WriteDriveIdent
 
 ##### CppAppELThermalCMD.lvclass
 
 This class corresponds to the commands available for the Elevation drives
 thermal subsystem, the methods in this class are:
 
--   ControlMode
+- ControlMode
 
--   ReadELThermalIdent
+- ReadELThermalIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   WriteELThermalIdent
+- WriteELThermalIdent
 
 ##### CppAppLPCMD.lvclass
 
 This class corresponds to the commands available for the Locking Pins subsystem,
 the methods in this class are:
 
--   LP_Free
+- LP_Free
 
--   LP_Lock
+- LP_Lock
 
--   LP_Test
+- LP_Test
 
--   Move
+- Move
 
--   MoveVelocity
+- MoveVelocity
 
--   ReadPinIdent
+- ReadPinIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   WritePinIdent
+- WritePinIdent
 
 ##### CppAppMainAxesCMD.lvclass
 
 This class corresponds to the commands available for the Main Axes subsystem,
 the methods in this class are:
 
--   MoveToTarget
+- MoveToTarget
 
--   Stop
+- Stop
 
--   TrackTarget
+- TrackTarget
 
 ##### CppAppMCCMD.lvclass
 
 This class corresponds to the commands available for the Mirror Cover subsystem,
 the methods in this class are:
 
--   MCClose
+- MCClose
 
--   MCOpen
+- MCOpen
 
--   Move
+- Move
 
--   MoveVelocity
+- MoveVelocity
 
--   ReadSectorIdent
+- ReadSectorIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   WriteSectorIdent
+- WriteSectorIdent
 
 ##### CppAppMCLCMD.lvclass
 
 This class corresponds to the commands available for the Mirror Cover Locks
 subsystem, the methods in this class are:
 
--   MCL_Close
+- MCL_Close
 
--   MCL_Open
+- MCL_Open
 
--   Move
+- Move
 
--   MoveVelocity
+- MoveVelocity
 
--   ReadMirrorLockIdent
+- ReadMirrorLockIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   Stop
+- Stop
 
--   WriteMirrorLockIdent
+- WriteMirrorLockIdent
 
 ##### CppAppModbusTempControllersCMD.lvclass
 
 This class corresponds to the commands available for the Modbus Temperature
 Controllers subsystem, the methods in this class are:
 
--   FanPower
+- FanPower
 
--   ReadDriveIdent
+- ReadDriveIdent
 
--   ResetAlarm
+- ResetAlarm
 
--   Setpoint
+- Setpoint
 
--   WriteDriveIdent
+- WriteDriveIdent
 
 ##### CppAppMPSCMD.lvclass
 
 This class corresponds to the commands available for the Main Power Supply
 subsystem, the methods in this class are:
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
 ##### CppAppOSSCMD.lvclass
 
 This class corresponds to the commands available for the Oil Supply System
 subsystem, the methods in this class are:
 
--   ResetAlarm
+- ResetAlarm
 
--   SendAbortPoweringCMD
+- SendAbortPoweringCMD
 
--   SendChangeModeCMD
+- SendChangeModeCMD
 
--   SendCoolingPowerCMD
+- SendCoolingPowerCMD
 
--   SendMainPumpPowerCMD
+- SendMainPumpPowerCMD
 
--   SendOilPowerCMD
+- SendOilPowerCMD
 
--   SendPowerCMD
+- SendPowerCMD
 
 ##### CppAppSafetyCMD.lvclass
 
 This class corresponds to the commands available for the Safety subsystem, the
 methods in this class are:
 
--   SafetyReleaseOverride
+- SafetyReleaseOverride
 
--   SafetyReset
+- SafetyReset
 
--   SafetySetOverride
+- SafetySetOverride
 
 ##### CppAppTECCMD.lvclass
 
 This class corresponds to the commands available for the Top End Chiller
 subsystem, the methods in this class are:
 
--   ResetAlarm
+- ResetAlarm
 
--   SendPowerCMD
+- SendPowerCMD
 
--   TrackExtTemp
+- TrackExtTemp
 
 ##### CppAppTFCMD.lvclass
 
 This class corresponds to the commands available for the Transfer Function
 subsystem, the methods in this class are:
 
--   ExcitationConfig
+- ExcitationConfig
 
--   ResetAlarm
+- ResetAlarm
 
 ### GetEventfromTMA.lvclass
 
@@ -593,11 +593,11 @@ sections.
 This state is just executed once and is the first executed one. Here the
 initialization actions are executed. These are:
 
--   Initialization of local variable
+- Initialization of local variable
 
--   Registration of events for the event structure
+- Registration of events for the event structure
 
--   Updating the displayed name of the VI for debug purposes
+- Updating the displayed name of the VI for debug purposes
 
 ![GetEVENTFromTMA.lvclass_Process.vi Init\label{figurethirty-eight7594b113e7a74001bbb6be57518ab3a3}](../Resources/figures/7594b113e7a74001bbb6be57518ab3a3.png)
 
@@ -616,25 +616,25 @@ events are received and parsed, the event that receives the TCP messages is
 called “DataFromTCP” see Figure \ref{figureforty-onef00e25525f869863dacc2c4672994d39}. The TCP messages are parsed and the
 appropriate user events are generated, these events are:
 
--   Ack event: this event is used to transmit the received ack or no ack events.
+- Ack event: this event is used to transmit the received ack or no ack events.
 
--   Done event: this event is used to transmit the done events.
+- Done event: this event is used to transmit the done events.
 
--   Error event: this event is used to transmit the received fault events.
+- Error event: this event is used to transmit the received fault events.
 
--   Warning event: this event is used to transmit the received warning events.
+- Warning event: this event is used to transmit the received warning events.
 
--   Version event: this event is used to transmit the version from the TMA.
+- Version event: this event is used to transmit the version from the TMA.
 
 With some messages no user events are generated. These cases are:
 
--   StateInfo: when this message is received the state of the TMA is updated
+- StateInfo: when this message is received the state of the TMA is updated
     using the methods from the TMAOMTMonitoring.lvclass. For “State” submessages
     from the StateInfo messages the state of the TMA statemachine must be
     updated, to do so the PublishTMAOMTState method from the
     CommanderCheck.lvclass is used.
 
--   InPosition: not used in the HMI application.
+- InPosition: not used in the HMI application.
 
 ![GetEVENTFromTMA.lvclass_Process.vi DataFromTCP\label{figureforty-onef00e25525f869863dacc2c4672994d39}](../Resources/figures/f00e25525f869863dacc2c4672994d39.png)
 
@@ -673,9 +673,7 @@ published and cleared for the next iteration.
 
 ![GetEVENTFromTMA.lvclass_Process.vi Error\label{figureforty-seven16549f5ba20f1abe2e0b7bb142b70442}](../Resources/figures/16549f5ba20f1abe2e0b7bb142b70442.png)
 
-### TMAOMTMonitoring task
-
-To be updated
+### TMAOMTMonitoring task  #TODO: To be updated
 
 This task is responsible of monitoring the TMA OMT status.
 
@@ -871,9 +869,7 @@ stop the loop and close the connection to the TMA OMT.
 
 ![Loop states: Shutdown\label{figureseventy-three8cd88c931dc08cc2714ec3df401d5a0f}](../Resources/figures/8cd88c931dc08cc2714ec3df401d5a0f.png)
 
-### CommanderCheck task
-
-To be updated
+### CommanderCheck task #TODO: To be updated
 
 This task will be waiting for commands form outside and, in the timeout, will
 check the actual commander var. If the commander has changed an event will be
@@ -897,11 +893,11 @@ Here the available methods for this task are explained.
 
 This VI is used to launch the process, to do so some inputs are required:
 
--   Commander Variable URL: a string with the URL of the CommanderVariable that
+- Commander Variable URL: a string with the URL of the CommanderVariable that
     the process will use to know if the commander has changed and how is the new
     commander.
 
--   Status Variable URL: a string with the URL of the Status Variable that the
+- Status Variable URL: a string with the URL of the Status Variable that the
     process will use publish the last TMA OMT status.
 
 ![Task method: CommanderCheck_Init\label{figureseventy-five6445a816c30524906950111a5620ae4a}](../Resources/figures/6445a816c30524906950111a5620ae4a.png)
