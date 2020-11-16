@@ -45,7 +45,7 @@ Here each of the available methods are listed.
 
 Initialize the alarm Reception task:
 
-\- Launch the TCP server, see section 5.1.4, used to communicate with the HHD.
+\- Launch the TCP server, see [this section](#serverlvclass), used to communicate with the HHD.
 For doing this a xml file is needed, in this file a section with the name
 "AlarmsForHHDServerConnectionData" must be found to initialize the server. The
 configuration used for this TCP server can be found in the “HMIConfig.xml” file

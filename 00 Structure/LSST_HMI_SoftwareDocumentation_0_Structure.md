@@ -5,14 +5,13 @@ software located in the HMIComputers repository,
 [here](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers).
 The purpose of this documentation is to explain the architecture design of the
 HMI system. To do so, the main components of the HMI code are explained. The
-develop tools and tips are also included as part of the documentation and
-explained in a separated file.
+develop tools and tips are also included as part of the documentation.
 
 Important notes:
 
 - In the documentation there could be some misunderstandings due to the naming of the hardware devices and software. Mainly when using the abbreviations EUI and HHD.
   - EUI stands for Engineering User Interface, but sometimes it is used to
-    refer to the PC that runs the EUI itself. This PC it is named MCC (Main
+    refer to the PC that runs the EUI itself. This PC is named MCC (Main
     Control Computer).
   - HHD stands for Handheld Device, but the EUI that runs on the HHD it is
     also called HHD.
@@ -29,7 +28,7 @@ system or execute maintenance operations.
 
 ![Communications structure between the different components of the MainControl System (MCS)\label{figureone350f30df820b4ef01f38b7cadcba9985}](../Resources/figures/350f30df820b4ef01f38b7cadcba9985.png)
 
-Focusing only in the HMI part the Figure \ref{figureone350f30df820b4ef01f38b7cadcba9985} simplifies to the Figure \ref{figuretwo3d62584b986c8ac035e591e474694ccc}, having
+Focusing only in the HMI part, the Figure \ref{figureone350f30df820b4ef01f38b7cadcba9985} simplifies to the Figure \ref{figuretwo3d62584b986c8ac035e591e474694ccc}, having
 the components of the HMI divided and the relation between the different
 elements explained. Al the components inside the HMI Components box are coded in
 LabVIEW and compiled together as the EUI, for both the HHD and the MCC, with
@@ -62,20 +61,4 @@ As shown in Figure \ref{figuretwo3d62584b986c8ac035e591e474694ccc}, the componen
 
 -   User Interface: the one that the user sees and interacts with.
 
-Each of the components is explained in detail in the following files:
-
-1.  LSST_HMI_SoftwareDocumentation_1_CommandsAndEventsManagement file. This file
-    contains the Commands and Events management documentation file. This
-    document contains the following components: TCP Client, TMA Commanding and
-    Alarm Management.
-
-2.  User Management documentation file. This document contains only the User
-    Management component.
-
-3.  Telemetry Management documentation file. This document contains only the
-    Telemetry Management component.
-
-4.  User Interface documentation file. This document contains only the User
-    Interface component. This document contains more than one document, to make
-    searching easier and faster. There is a main document with the general
-    documentation of the user interface and then one document for each window.
+Each of the components is explained in detail in the following sections.
