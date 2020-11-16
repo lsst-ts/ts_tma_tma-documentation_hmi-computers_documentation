@@ -3,7 +3,7 @@
 This is the brain of the app and manages way it works and transitions from one
 window to another.
 
-![HMI User Interface Events Diagram](../Resources/0680daf1377c291bcc360658938b702b.png)
+![HMI User Interface Events Diagram](../Resources/figures/0680daf1377c291bcc360658938b702b.png)
 
 In this section all the windows of the HMI are explained.
 
