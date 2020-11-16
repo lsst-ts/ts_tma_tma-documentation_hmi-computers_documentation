@@ -1,6 +1,6 @@
 # Commands and Events Management
 
-This document contains the different components related to the commands and
+This section contains the different components related to the commands and
 events from the TMA that are:
 
 -   TCP Client: this component is the one that connects to the TMA over TCP to
