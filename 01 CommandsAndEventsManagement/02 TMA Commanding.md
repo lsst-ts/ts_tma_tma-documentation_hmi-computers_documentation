@@ -717,7 +717,7 @@ initialization actions are executed. These are:
 
 This state is executed constantly after executing every new CMD, here the events
 created at the methods are received and executed in the next iteration, in the
-event called â€œEventsToProcessâ€ see Figure \ref{figureforty0ffa46f585c98b683a6134b3b50cf30d}.
+event called "EventsToProcess" see Figure \ref{figureforty0ffa46f585c98b683a6134b3b50cf30d}.
 
 ![GetEVENTFromTMA.lvclass_Process.vi Idle\label{figurethirty-ninefd6414a2c920162a8a200737a0b5767b}](../Resources/figures/fd6414a2c920162a8a200737a0b5767b.png)
 
