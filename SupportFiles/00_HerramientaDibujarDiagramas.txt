@@ -1,0 +1,12 @@
+En este documento se explica donde se encuentra y como se modifica un diagrama guardado en xml.
+
+	Aplicación: 
+		La herramienta usada para crear los diagramas es online, se llama draw y se encuantra en la siguiente web: https://www.draw.io/
+	
+	Modificar diagrama:
+		1- Hay que tener el archivo xml que corresponde con el diagrama, habitualmente guardado con el mismo nombre en este directorio.
+		2- Abrir la web de la aplicación.
+		3- Decir que queremos vargar un archivo desde el "device" y seleccionar el deseado.
+		4- Hacer las modificaciones deseadas.
+		5- Exportar el nuevo diagrama en el formato deseado.
+		6- Guardar el xml con el diagrama para futuras modificaciones.
