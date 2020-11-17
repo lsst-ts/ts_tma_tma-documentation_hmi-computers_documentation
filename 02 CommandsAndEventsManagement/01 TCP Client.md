@@ -24,9 +24,9 @@ The values of this configuration can be modified to improve the performance or
 if the IP or port of the machine running the TMA OMT (operation_manager)
 changes. The values that must be maintained are:
 
--   ReadResponses: this must be set to FALSE.
+- ReadResponses: this must be set to FALSE.
 
--   ReadDataFromTCP: this must be set to TRUE.
+- ReadDataFromTCP: this must be set to TRUE.
 
 ### Sender.lvclass
 
@@ -38,30 +38,30 @@ class main elements are explained in the following sections.
 This task requires from a configuration file for initialization, in*\*.xml*
 format that contains the following sections:
 
--   Remote_Adress: the IP of the target you want to connect to.
+- Remote_Adress: the IP of the target you want to connect to.
 
--   Remote_Port: the port of the target you want to connect to.
+- Remote_Port: the port of the target you want to connect to.
 
--   Connect_Timeout_in_ms: timeout for the connect.
+- Connect_Timeout_in_ms: timeout for the connect.
 
--   Send-Receive_Timeout_in_ms: timeout for the send receive, this is used when
-    the read response is configured.
+- Send-Receive_Timeout_in_ms: timeout for the send receive, this is used when
+  the read response is configured.
 
--   ReadResponses: when this is TRUE, every time a message is sent it waits for
-    a response with the timeout (Send-Receive_Timeout_in_ms).
+- ReadResponses: when this is TRUE, every time a message is sent it waits for
+  a response with the timeout (Send-Receive_Timeout_in_ms).
 
--   bytes_to_read: bytes to read from TCP.
+- bytes_to_read: bytes to read from TCP.
 
--   ReadMode: here the read mode is configured, the options are:
-    sel='Standard'\>0; sel='Buffered'\>1; sel='CRLF'\>2; sel='Immediate'\>3
+- ReadMode: here the read mode is configured, the options are:
+  sel='Standard'\>0; sel='Buffered'\>1; sel='CRLF'\>2; sel='Immediate'\>3
 
--   Check_Connection_time_ms: this is the timeout for check the connection
-    status, this timeout also sets the frequency for checking the TCP for
-    reading responses.
+- Check_Connection_time_ms: this is the timeout for check the connection
+  status, this timeout also sets the frequency for checking the TCP for
+  reading responses.
 
--   ReadDataFromTCP: when this is TRUE the task reads the TCP messages with the
-    check connection timeout frequency and publishes an event with the received
-    data.
+- ReadDataFromTCP: when this is TRUE the task reads the TCP messages with the
+  check connection timeout frequency and publishes an event with the received
+  data.
 
 #### Task process
 
@@ -155,13 +155,13 @@ This state is executed when the CheckConnection time ms time is passed without
 any new commands. When this happens the case Timeout is executed and depending
 on the configuration it does:
 
--   If ReadDataFromTCP is set to TRUE: reads the TCP messages and publishes an
-    event with the data.
+- If ReadDataFromTCP is set to TRUE: reads the TCP messages and publishes an
+  event with the data.
 
--   If ReadDataFromTCP is set to FALSE: it just checks if the connection is ok.
+- If ReadDataFromTCP is set to FALSE: it just checks if the connection is ok.
 
--   In both cases if the connection is not OK it sends a reconnect to itself,
-    see Figure \ref{figuretwelve1be04df075f3f54aa02c427bd084055d}.
+- In both cases if the connection is not OK it sends a reconnect to itself,
+  see Figure \ref{figuretwelve1be04df075f3f54aa02c427bd084055d}.
 
 ![Sender.lvclass_Process.vi Timeout from Idle\label{figureten091f9552d65a830b8536f8f845c6039d}](../Resources/figures/091f9552d65a830b8536f8f845c6039d.png)
 
@@ -186,12 +186,12 @@ This state is used to hide the front panel of the process.
 This case corresponds to the public method SendString, here the message
 specified to the method is sent over TCP. Depending on the configuration:
 
--   If ReadResponses is set to TRUE, the task waits for the time specified as
-    “Send-Receive Timeout in ms” to a response message from TCP and sends it to
-    the public method in the response queue. See Figure \ref{figuresixteeneb10377e7b097486e35430db315340c4}.
+- If ReadResponses is set to TRUE, the task waits for the time specified as
+  “Send-Receive Timeout in ms” to a response message from TCP and sends it to
+  the public method in the response queue. See Figure \ref{figuresixteeneb10377e7b097486e35430db315340c4}.
 
--   If ReadResponses is set to FALSE, %NoResponse% is sent to the public method
-    in the response queue.
+- If ReadResponses is set to FALSE, %NoResponse% is sent to the public method
+  in the response queue.
 
 ![Sender.lvclass_Process.vi CMD-SendString\label{figurefifteen77dee0dd617fe4f24b6ce93de2993037}](../Resources/figures/77dee0dd617fe4f24b6ce93de2993037.png)
 
@@ -232,4 +232,3 @@ the error line is cleared and if the TCP connection was active it is closed and
 the reconnect method is used to open the connection again.
 
 ![Sender.lvclass_Process.vi Error\label{figuretwenty-one2731e97c5ffe676eb7678b889e90b1b2}](../Resources/figures/2731e97c5ffe676eb7678b889e90b1b2.png)
-

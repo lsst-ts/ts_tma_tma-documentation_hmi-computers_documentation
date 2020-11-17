@@ -9,7 +9,7 @@ documentación del projecto del HMI.
 ## Instalar WireFlow para los usuarios
 
 1.  Ir a donde está el toolkit:
-    [\\\\ada\\DTecnologia\\BiblioUnidades\\AUT_ControlAutomatico\\Software\\LabVIEWTools](file://ada/DTecnologia/BiblioUnidades/AUT_ControlAutomatico/Software/LabVIEWTools)
+  [\\\\ada\\DTecnologia\\BiblioUnidades\\AUT_ControlAutomatico\\Software\\LabVIEWTools](file://ada/DTecnologia/BiblioUnidades/AUT_ControlAutomatico/Software/LabVIEWTools)
 
 2.  Abrir VI Package Manager, como admin.
 
@@ -18,10 +18,10 @@ documentación del projecto del HMI.
 4.  Click en instalar
 
 5.  Durante la instalación nos abrirá dos directorios para que instalemos los
-    drivers que corresponden al toolkit.
+  drivers que corresponden al toolkit.
 
-    1.  Instalar el security suite que toque, ver readme. Windows 10 usar:
-        WF-SecuritySuite_vista&7
+  1.  Instalar el security suite que toque, ver readme. Windows 10 usar:
+    WF-SecuritySuite_vista&7
 
-    2.  Instalar fingerprint reader que toque, ver readme. Windows 10 usar:
-        WF-Fingerprint_reader
+  2.  Instalar fingerprint reader que toque, ver readme. Windows 10 usar:
+    WF-Fingerprint_reader

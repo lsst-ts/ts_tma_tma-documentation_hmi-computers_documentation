@@ -62,31 +62,31 @@ WindowTelemetry.lvclass
 There are some public methods to manage the task
 
 - WindowTelemetry_Init. This will be called at beginig to start the object and
-    launch the task. It needs the input of the path where to save data. Allows
-    the input of user event reference for publishing errors. If the reference is
-    not given a new one is created. The user reference output will have the
-    reference used.  
+  launch the task. It needs the input of the path where to save data. Allows
+  the input of user event reference for publishing errors. If the reference is
+  not given a new one is created. The user reference output will have the
+  reference used.  
 
-    ![](../Resources/figures/f1d5f9aaf774a87e2ba0c0ca1bd3c4f6.png)
+  ![WindowTelemetry_Init.vi context help](../Resources/figures/f1d5f9aaf774a87e2ba0c0ca1bd3c4f6.png)
 
 - CleanUp. It will close task and clean up the object. The reference for the
-    error user event will be deleted only if the user event is created by the
-    object
+  error user event will be deleted only if the user event is created by the
+  object
 
-    ![](../Resources/figures/166f86bef700097b4bf11f35718b448a.png)
+  ![CleanUp.vi context help](../Resources/figures/166f86bef700097b4bf11f35718b448a.png)
 
 - SendData. This VI will send data to be saved to the task. The task will only
-    save the received data if saving is active, otherwise this data will be
-    discarded.
+  save the received data if saving is active, otherwise this data will be
+  discarded.
 
-    ![](../Resources/figures/4352f660d6ba8337ea26f4f6d2c65e7b.png)
+  ![SendData.vi context help](../Resources/figures/4352f660d6ba8337ea26f4f6d2c65e7b.png)
 
 - StartSave. Ask task to save data. If the saving does not starts the VI will
-    through an error  
+  through an error  
 
-    ![](../Resources/figures/e19fc515aa52af2bac38888d8b0932f5.png)
+  ![StartSave.vi context help](../Resources/figures/e19fc515aa52af2bac38888d8b0932f5.png)
 
 - StopSave. Ask task to stop saving data. If the saving does not stops the VI
-    will through an error  
+  will through an error  
 
-    ![](../Resources/figures/51f0ca449fedc013a785e0c628c897ad.png)
+  ![StopSave.vi context help](../Resources/figures/51f0ca449fedc013a785e0c628c897ad.png)
