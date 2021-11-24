@@ -1028,7 +1028,7 @@ string specified at the method is written to the status connection variable.
 
 This state is executed when the ActivateChecking method is used. Here the
 Boolean value specified to the method is used to set the value of the
-CheckCommander? Local variable.
+"CheckCommander?" Local variable.
 
 ![Loop states: ActivateChecking\label{figureninety-four42d9e52be937bdc9663b176537c2f2b4}](../Resources/figures/42d9e52be937bdc9663b176537c2f2b4.png)
 
