@@ -7,25 +7,25 @@ tasks that will be explained in this section. This component has two main
 different parts:
 
 - Command sending: this means generating the TCP message to send to the TMA
-    using the TCP Client. This is done using the CppAppCommand.lvclass. This
-    class is the one that generates the TCP message for each specific command
-    and sends them to the TMA using the TCP Client.
+  using the TCP Client. This is done using the CppAppCommand.lvclass. This
+  class is the one that generates the TCP message for each specific command
+  and sends them to the TMA using the TCP Client.
 
 - Event reception: this means getting the messages from the TMA over the TCP
-    Client and generating the corresponding events inside the HMI application.
-    This is done using the GetEVENTFromTMA.lvclass. This class is responsible of
-    parsing the events from the TMA received by the TCP Client and generate the
-    corresponding events inside the HMI application.
+  Client and generating the corresponding events inside the HMI application.
+  This is done using the GetEVENTFromTMA.lvclass. This class is responsible of
+  parsing the events from the TMA received by the TCP Client and generate the
+  corresponding events inside the HMI application.
 
 In addition to these two classes there are two other classes inside the TMA
 Commanding component. These are:
 
 - TMAOMTMonitoring.lvclass: this class is used to monitor the status of the
-    TMA received in the “*StateInfo*” events.
+  TMA received in the “*StateInfo*” events.
 
 - CommanderCheck.lvclass: this class is used to monitor the actual commander
-    and generate the corresponding events to change the user interface and block
-    the command sending when the actual HMI is not the commander.
+  and generate the corresponding events to change the user interface and block
+  the command sending when the actual HMI is not the commander.
 
 Each of the classes mentioned in above are explained in the upcoming sections.
 
@@ -629,10 +629,10 @@ appropriate user events are generated, these events are:
 With some messages no user events are generated. These cases are:
 
 - StateInfo: when this message is received the state of the TMA is updated
-    using the methods from the TMAOMTMonitoring.lvclass. For “State” submessages
-    from the StateInfo messages the state of the TMA statemachine must be
-    updated, to do so the PublishTMAOMTState method from the
-    CommanderCheck.lvclass is used.
+  using the methods from the TMAOMTMonitoring.lvclass. For “State” submessages
+  from the StateInfo messages the state of the TMA statemachine must be
+  updated, to do so the PublishTMAOMTState method from the
+  CommanderCheck.lvclass is used.
 
 - InPosition: not used in the HMI application.
 
@@ -894,11 +894,11 @@ Here the available methods for this task are explained.
 This VI is used to launch the process, to do so some inputs are required:
 
 - Commander Variable URL: a string with the URL of the CommanderVariable that
-    the process will use to know if the commander has changed and how is the new
-    commander.
+  the process will use to know if the commander has changed and how is the new
+  commander.
 
 - Status Variable URL: a string with the URL of the Status Variable that the
-    process will use publish the last TMA OMT status.
+  process will use publish the last TMA OMT status.
 
 ![Task method: CommanderCheck_Init\label{figureseventy-five6445a816c30524906950111a5620ae4a}](../Resources/figures/6445a816c30524906950111a5620ae4a.png)
 
@@ -1028,7 +1028,7 @@ string specified at the method is written to the status connection variable.
 
 This state is executed when the ActivateChecking method is used. Here the
 Boolean value specified to the method is used to set the value of the
-CheckCommander? Local variable.
+"CheckCommander?" Local variable.
 
 ![Loop states: ActivateChecking\label{figureninety-four42d9e52be937bdc9663b176537c2f2b4}](../Resources/figures/42d9e52be937bdc9663b176537c2f2b4.png)
 

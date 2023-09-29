@@ -7,7 +7,7 @@ The telemetry must perform the following actions:
 - Save data locally for two days. And only two days.
 
 - Send data to TCS every 50 ms. (this can be configured by topic in the
-    configuration file)
+  configuration file)
 
 The mentioned actions are performed by two different tasks. One for getting the
 data and saving it locally, this task is called Telemetry logging task. The
@@ -15,20 +15,20 @@ other for sending the received data to the TCS, this task is called
 TCP_Telemetry. These two tasks are explained in the next sections.
 
 - Telemetry logging task: This task is the one obtaining the data from the
-    PXI.
+  PXI.
 
 - TCP Telemetry task: This task is responsible of sending all the needed
-    telemetry to the CSC over TCP.
+  telemetry to the CSC over TCP.
 
 This document also contains the documentation of the configuration files for the
 telemetry. These files are:
 
 - Topic Telemetry configuration file: defines all the telemetry to get from
-    the PXI classified by topic, default name:
-    “TelemetryTopicsConfiguration.ini”.
+  the PXI classified by topic, default name:
+  “TelemetryTopicsConfiguration.ini”.
 
 - Window Telemetry configuration file: defines the telemetry to display in
-    each window, default name: “HMIWindowsTelemetryVariables.ini”.
+  each window, default name: “HMIWindowsTelemetryVariables.ini”.
 
 ## Telemetry configuration
 
@@ -53,79 +53,79 @@ means that this topic has no data of this type. The cluster has 5 fields for
 each variable that will be read from the PXI:
 
 - URL: This field defines the url of the network shared variable to read. This
-    is the real identification of the topic since this is unique.
+  is the real identification of the topic since this is unique.
 
 - Unit: Units of the data. This data will be added to the saved files.
 
 - Comments: In this field some comments could be added. This data will be
-    added to the saved files.
+  added to the saved files.
 
 - TCP_PublishName: here the name that will be used when publishing the data
-    over TCP is specified.
+  over TCP is specified.
 
 - TCP_Publish: this is a Boolean value, FALSE or TRUE that enables or disables
-    the the publication of the variable over TCP.
+  the the publication of the variable over TCP.
 
 Boolean and DBL Array data type examples:
 
->   *Boolean Telemetry Data.\<size(s)\> = "2"*
+> *Boolean Telemetry Data.\<size(s)\> = "2"*
 
->   *Boolean Telemetry Data 0.url =
->   "psp://192.168.209.10/SafetyModbusComm/AZlimP"*
+> *Boolean Telemetry Data 0.url =
+> "psp://192.168.209.10/SafetyModbusComm/AZlimP"*
 
->   *Boolean Telemetry Data 0.Unit = ""*
+> *Boolean Telemetry Data 0.Unit = ""*
 
->   *Boolean Telemetry Data 0.Comments = "Azimuth Positive power off limit
->   switch AND topple block pos A"*
+> *Boolean Telemetry Data 0.Comments = "Azimuth Positive power off limit
+> switch AND topple block pos A"*
 
->   *Boolean Telemetry Data 0.TCP_PublishName = "aZlimP"*
+> *Boolean Telemetry Data 0.TCP_PublishName = "aZlimP"*
 
->   *Boolean Telemetry Data 0.TCP_Publish = "FALSE"*
+> *Boolean Telemetry Data 0.TCP_Publish = "FALSE"*
 
->   *Boolean Telemetry Data 1.url =
->   "psp://192.168.209.10/SafetyModbusComm/AZlimN"*
+> *Boolean Telemetry Data 1.url =
+> "psp://192.168.209.10/SafetyModbusComm/AZlimN"*
 
->   *Boolean Telemetry Data 1.Unit = ""*
+> *Boolean Telemetry Data 1.Unit = ""*
 
->   *Boolean Telemetry Data 1.Comments = "Azimuth Negative power off limit
->   switch AND topple block pos B"*
+> *Boolean Telemetry Data 1.Comments = "Azimuth Negative power off limit
+> switch AND topple block pos B"*
 
->   *Boolean Telemetry Data 1.TCP_PublishName = "aZlimN"*
+> *Boolean Telemetry Data 1.TCP_PublishName = "aZlimN"*
 
->   *Boolean Telemetry Data 1.TCP_Publish = "FALSE"*
+> *Boolean Telemetry Data 1.TCP_Publish = "FALSE"*
 
->   *DBL Array Telemetry Data.\<size(s)\> = "24"*
+> *DBL Array Telemetry Data.\<size(s)\> = "24"*
 
->   *DBL Array Telemetry Data 0.url = "psp://192.168.209.10/PXIComm_NSV/Azimuth
->   Angle Actual"*
+> *DBL Array Telemetry Data 0.url = "psp://192.168.209.10/PXIComm_NSV/Azimuth
+> Angle Actual"*
 
->   *DBL Array Telemetry Data 0.Unit = "deg"*
+> *DBL Array Telemetry Data 0.Unit = "deg"*
 
->   *DBL Array Telemetry Data 0.Comments = "Actual position for azimuth axis"*
+> *DBL Array Telemetry Data 0.Comments = "Actual position for azimuth axis"*
 
->   *DBL Array Telemetry Data 0.TCP_PublishName = "azimuthAngleActual"*
+> *DBL Array Telemetry Data 0.TCP_PublishName = "azimuthAngleActual"*
 
->   *DBL Array Telemetry Data 0.TCP_Publish = "TRUE"*
+> *DBL Array Telemetry Data 0.TCP_Publish = "TRUE"*
 
->   *DBL Array Telemetry Data 1.url = "psp://192.168.209.10/PXIComm_NSV/Azimuth
->   Controller Angle Set"*
+> *DBL Array Telemetry Data 1.url = "psp://192.168.209.10/PXIComm_NSV/Azimuth
+> Controller Angle Set"*
 
->   *DBL Array Telemetry Data 1.Unit = "deg"*
+> *DBL Array Telemetry Data 1.Unit = "deg"*
 
->   *DBL Array Telemetry Data 1.Comments = "Actual setpoint of azimuth axis"*
+> *DBL Array Telemetry Data 1.Comments = "Actual setpoint of azimuth axis"*
 
->   *DBL Array Telemetry Data 1.TCP_PublishName = "azimuthAngleSet"*
+> *DBL Array Telemetry Data 1.TCP_PublishName = "azimuthAngleSet"*
 
->   *DBL Array Telemetry Data 1.TCP_Publish = "TRUE"*
+> *DBL Array Telemetry Data 1.TCP_Publish = "TRUE"*
 
 Apart of the variables, each topic also includes the configuration for TCP
 publication as a topic. For configuring this there are two values:
 
 - TopicID: the identifier of the topic, this will be published as part of the
-    tCP message to identify the Topic.
+  tCP message to identify the Topic.
 
 - TopicFrequencyMultiple50ms: this value is used to configure the publication
-    frequency of the topic.
+  frequency of the topic.
 
 ### Window Telemetry configuration file
 
@@ -144,51 +144,51 @@ The structure used in the “*HMIWindowsTelemetryVariables.ini*” file is the o
 generated by OpenG Variant Configuration file palette Vis when managing arrays.
 An example for the Azimuth cAble wrap is as follows:
 
->   *[Azimuth Cable Wrap]*
+> *[Azimuth Cable Wrap]*
 
->   *String Telemetry Variables.\<size(s)\> = "3"*
+> *String Telemetry Variables.\<size(s)\> = "3"*
 
->   *String Telemetry Variables 0 = "PXIComm_NSV/ACW Status"*
+> *String Telemetry Variables 0 = "PXIComm_NSV/ACW Status"*
 
->   *String Telemetry Variables 1 = "PXIComm_NSV/ACW Status Drive 1"*
+> *String Telemetry Variables 1 = "PXIComm_NSV/ACW Status Drive 1"*
 
->   *String Telemetry Variables 2 = "PXIComm_NSV/ACW Status Drive 2"*
+> *String Telemetry Variables 2 = "PXIComm_NSV/ACW Status Drive 2"*
 
->   *DBL Telemetry Variables.\<size(s)\> = "0"*
+> *DBL Telemetry Variables.\<size(s)\> = "0"*
 
->   *DBL Array Telemetry Variables.\<size(s)\> = "7"*
+> *DBL Array Telemetry Variables.\<size(s)\> = "7"*
 
->   *DBL Array Telemetry Variables 0 = "PXIComm_NSV/ACW Angle 1"*
+> *DBL Array Telemetry Variables 0 = "PXIComm_NSV/ACW Angle 1"*
 
->   *DBL Array Telemetry Variables 1 = "PXIComm_NSV/ACW Angle 2"*
+> *DBL Array Telemetry Variables 1 = "PXIComm_NSV/ACW Angle 2"*
 
->   *DBL Array Telemetry Variables 2 = "PXIComm_NSV/Azimuth Angle Actual"*
+> *DBL Array Telemetry Variables 2 = "PXIComm_NSV/Azimuth Angle Actual"*
 
->   *DBL Array Telemetry Variables 3 = "PXIComm_NSV/ACW Speed 1"*
+> *DBL Array Telemetry Variables 3 = "PXIComm_NSV/ACW Speed 1"*
 
->   *DBL Array Telemetry Variables 4 = "PXIComm_NSV/ACW Speed 2"*
+> *DBL Array Telemetry Variables 4 = "PXIComm_NSV/ACW Speed 2"*
 
->   *DBL Array Telemetry Variables 5 = "PXIComm_NSV/CCW Current 1"*
+> *DBL Array Telemetry Variables 5 = "PXIComm_NSV/CCW Current 1"*
 
->   *DBL Array Telemetry Variables 6 = "PXIComm_NSV/CCW Current 2"*
+> *DBL Array Telemetry Variables 6 = "PXIComm_NSV/CCW Current 2"*
 
->   *Boolean Telemetry Variables.\<size(s)\> = "3"*
+> *Boolean Telemetry Variables.\<size(s)\> = "3"*
 
->   *Boolean Telemetry Variables 0 = "PXIComm_NSV/ACW Positive Direcctional
->   limit Switch"*
+> *Boolean Telemetry Variables 0 = "PXIComm_NSV/ACW Positive Direcctional
+> limit Switch"*
 
->   *Boolean Telemetry Variables 1 = "PXIComm_NSV/ACW Negative Direcctional
->   limit Switch"*
+> *Boolean Telemetry Variables 1 = "PXIComm_NSV/ACW Negative Direcctional
+> limit Switch"*
 
->   *Boolean Telemetry Variables 2 = "SafetyModbusComm/stoAZCW"*
+> *Boolean Telemetry Variables 2 = "SafetyModbusComm/stoAZCW"*
 
->   *String Array Telemetry Variables.\<size(s)\> = "1"*
+> *String Array Telemetry Variables.\<size(s)\> = "1"*
 
->   *String Array Telemetry Variables 0 = "PXIComm_NSV/ACW Interlocks"*
+> *String Array Telemetry Variables 0 = "PXIComm_NSV/ACW Interlocks"*
 
->   *INT32 Telemetry Variables.\<size(s)\> = "0"*
+> *INT32 Telemetry Variables.\<size(s)\> = "0"*
 
->   *Int64 Array Telemetry Variables.\<size(s)\> = "0"*
+> *Int64 Array Telemetry Variables.\<size(s)\> = "0"*
 
 ### Telemetry Configuration from Files Initialization
 
@@ -210,73 +210,73 @@ save the configuration for each execution.
 #### List of subVIs
 
 - GetTelemetryURLPath.vi: Gets the telemetry logging directory path and
-    creates if missing
+  creates if missing
 
 ![GetTelemetryURLPath.vi context help.\label{figurethree932c280570d0c737c2ba57afcddb1822}](../Resources/figures/932c280570d0c737c2ba57afcddb1822.png)
 
 - ManageTelemetryConfiguration.lvlib:FGV_TelemetryTopicsDefinitions.vi: FGV
-    for window telemetry URLs
+  for window telemetry URLs
 
 ![ManageTelemetryConfiguration.lvlib:FGV_TelemetryTopicsDefinitions.vicontext help.\label{figurefourefe2c371d95474c3f8c17acfd8618cc7}](../Resources/figures/efe2c371d95474c3f8c17acfd8618cc7.png)
 
 - ManageTelemetryConfiguration.lvlib:FGV_WindowTelemetryURLs.vi: FGV for
-    window telemetry URLs
+  window telemetry URLs
 
 ![ManageTelemetryConfiguration.lvlib:FGV_WindowTelemetryURLs.vi contexthelp.\label{figurefivef87c209deb4287435884eb88f5d21f29}](../Resources/figures/f87c209deb4287435884eb88f5d21f29.png)
 
 - ManageTelemetryConfiguration.lvlib:GetURLsForVariables.vi: Here the URL that
-    corresponds to each variable type is obtained.
+  corresponds to each variable type is obtained.
 
 ![ManageTelemetryConfiguration.lvlib:GetURLsForVariables.vi contexthelp.\label{figuresix9889332db525a1aa3e56bdd9864e3a9e}](../Resources/figures/9889332db525a1aa3e56bdd9864e3a9e.png)
 
 - ManageTelemetryConfiguration.lvlib:GetURLsFromTopicDefinitions.vi: Get the
-    URL from TopicDefinition for the specified VariableNames
+  URL from TopicDefinition for the specified VariableNames
 
 ![ManageTelemetryConfiguration.lvlib:GetURLsFromTopicDefinitions.vicontext help.\label{figureseven03f751f23223ab9b166701c6f4c7d107}](../Resources/figures/03f751f23223ab9b166701c6f4c7d107.png)
 
 - ManageTelemetryConfiguration.lvlib:ItemNotFoundError.vi: Here the error is
-    set explaining which item was not found while reading the TelemetryTopic
-    configuration
+  set explaining which item was not found while reading the TelemetryTopic
+  configuration
 
 ![ManageTelemetryConfiguration.lvlib:ItemNotFoundError.vi context help.\label{figureeight1be25e85fca41c98520182535244076d}](../Resources/figures/1be25e85fca41c98520182535244076d.png)
 
 - ManageTelemetryConfiguration.lvlib:ReadTelemetryTopicsConfigFile.vi: Read
-    topics configuration file and save the read data into a FGV.
+  topics configuration file and save the read data into a FGV.
 
 ![ManageTelemetryConfiguration.lvlib:ReadTelemetryTopicsConfigFile.vicontext help.\label{figurenine9b516e99237d8fa55da1f540d1738a5d}](../Resources/figures/9b516e99237d8fa55da1f540d1738a5d.png)
 
 - ManageTelemetryConfiguration.lvlib:ReadWindowTelemetryURLs.vi: Reads the
-    config file containing all the diferent URLs for all the requiered telemetry
-    and adds this URLs to a FGV
+  config file containing all the diferent URLs for all the requiered telemetry
+  and adds this URLs to a FGV
 
 ![ManageTelemetryConfiguration.lvlib:ReadWindowTelemetryURLs.vi contexthelp.\label{figureten60efce2ca841fb47f0e7953a672a7e4e}](../Resources/figures/60efce2ca841fb47f0e7953a672a7e4e.png)
 
 - NI_LVConfig.lvlib:Close Config Data.vi: Writes data to the
-    platform-independent configuration file identified by refnum and then closes
-    the reference to that file.
+  platform-independent configuration file identified by refnum and then closes
+  the reference to that file.
 
 ![NI_LVConfig.lvlib:Close Config Data.vi context help.\label{figureeleven45706de65e90257748db382f3e31a123}](../Resources/figures/45706de65e90257748db382f3e31a123.png)
 
 - NI_LVConfig.lvlib:Get Section Names.vi: Gets the names of all sections from
-    the configuration data identified by refnum.
+  the configuration data identified by refnum.
 
 ![NI_LVConfig.lvlib:Get Section Names.vi context help.\label{figuretwelveac1b2c087a7d2b3c665971b0369dafee}](../Resources/figures/ac1b2c087a7d2b3c665971b0369dafee.png)
 
 - NI_LVConfig.lvlib:Open Config Data.vi: Opens a reference to the
-    configuration data found in a platform-independent configuration file.
+  configuration data found in a platform-independent configuration file.
 
 ![NI_LVConfig.lvlib:Open Config Data.vi context help.\label{figurethirteene1e59827118c4533c7774a5cfc6a4fcc}](../Resources/figures/e1e59827118c4533c7774a5cfc6a4fcc.png)
 
 - Read Key (Variant)__ogtk.vi: Reads a value associated with key in a
-    specified section of the configuration data identified by refnum. If "key"
-    input is not specified, the name of the variant object is used as the key.
-    the "found?" output will be TRUE for compount objects (clusters) only if all
-    elements (recursively) are found. For example a Boolean named "Enable" with
-    a value of TRUE would correspond to the key-value pair: Enable=TRUE Note:
-    Special characters in section and key names will be escape-coded. These
-    include the following: \\00-\\1F (non-printable chars); "[", "]", and "="
-    (INI syntax elements); \\FE ("þ") and \\FF ("ÿ") (legacy bracket encoding);
-    Additionally, the escape character, "\\", will be escaped as "\\\\".
+  specified section of the configuration data identified by refnum. If "key"
+  input is not specified, the name of the variant object is used as the key.
+  the "found?" output will be TRUE for compount objects (clusters) only if all
+  elements (recursively) are found. For example a Boolean named "Enable" with
+  a value of TRUE would correspond to the key-value pair: Enable=TRUE Note:
+  Special characters in section and key names will be escape-coded. These
+  include the following: \\00-\\1F (non-printable chars); "[", "]", and "="
+  (INI syntax elements); \\FE ("þ") and \\FF ("ÿ") (legacy bracket encoding);
+  Additionally, the escape character, "\\", will be escaped as "\\\\".
 
 ![Read Key (Variant)__ogtk.vi context help.\label{figurefourteenef7f95b8a83143d2eb6da1cc37e37162}](../Resources/figures/ef7f95b8a83143d2eb6da1cc37e37162.png)
 
@@ -286,11 +286,11 @@ This task is the one obtaining the data from the PXI. This task does two main
 things:
 
 1. Read the data from the PXI and store it in memory. To be accessible by the
-    rest of tasks/windows that may need the data.
+  rest of tasks/windows that may need the data.
 
 2. Save the read data in TDMS format locally, as said before for 2 days. This
-    files after a certain time are zipped (conversion to \*.zip) to reduce space
-    in the hard drive.
+  files after a certain time are zipped (conversion to \*.zip) to reduce space
+  in the hard drive.
 
 For doing this the variables are read from the PXI using the URLs defined at the
 Topic Telemetry configuration file. Part of this task is also configured using
@@ -299,33 +299,33 @@ not topic specific configuration. The configuration values obtained from that
 file are:
 
 - File_Saving_directory_path: this is a relative path starting at the project
-    location.
+  location.
 
 - HMIWindowsTelemetryVariables_file_path: here the absolute path to the Window
-    Telemetry configuration file is specified.
+  Telemetry configuration file is specified.
 
 - TelemetryTopics_file_path: here the absolute path to the Topic Telemetry
-    configuration file is specified.
+  configuration file is specified.
 
 - DataAcquieringLoopFrequency_ms: this value corresponds to the timing of the
-    acquisition loop of the telemetry variables in mili seconds.
+  acquisition loop of the telemetry variables in mili seconds.
 
 - Telemetry_Decimate_Save: this value is used to avoid overloading when
-    saving, this value is used to divide the saving into bigger arrays to save
-    into the TDMS, the value corresponds to the iteration multiple of the data
-    acquisition loop. This means that with a default value of 10 the arrays with
-    50 values obtained every 50 ms are saved every (10\*50ms) 500 ms in arrays
-    of 500 values size.
+  saving, this value is used to divide the saving into bigger arrays to save
+  into the TDMS, the value corresponds to the iteration multiple of the data
+  acquisition loop. This means that with a default value of 10 the arrays with
+  50 values obtained every 50 ms are saved every (10\*50ms) 500 ms in arrays
+  of 500 values size.
 
 - TelemetryTaskConfig.DataHistoryDays: this value corresponds to the maximum
-    value of stored data in days. The default value is 2, this means that files
-    older than 2 days will be erased.
+  value of stored data in days. The default value is 2, this means that files
+  older than 2 days will be erased.
 
 - TelemetryTaskConfig.SecondsToLeaveUnZipped: this value, in seconds,
-    corresponds to the minimum time for TDMS files to be unzipped. This means
-    that the last TDMS to be zipped will be the actual time minus this value.
-    With the default value of 3600, means that there will be unzipped files for
-    the last hour.
+  corresponds to the minimum time for TDMS files to be unzipped. This means
+  that the last TDMS to be zipped will be the actual time minus this value.
+  With the default value of 3600, means that there will be unzipped files for
+  the last hour.
 
 ### Task process
 
@@ -336,19 +336,19 @@ events. The task main is contained in the process.vi, here there are 6 loops.
 - The loop on top is used for CMD reception.
 
 - The Data acquiring loop, is the one reading the network shared variables
-    from the PXI.
+  from the PXI.
 
 - The Data saving loop, is the one that writes the acquired data to TDMS.
 
 - The Check variables connection loop, this loop is used to reconnect the
-    variables that may fail when read in the Data acquiring loop.
+  variables that may fail when read in the Data acquiring loop.
 
 - UpdateActualData loop, this loop gets the data from the Data acquiring loop
-    and stores it into a DVR to be accessible by other tasks.
+  and stores it into a DVR to be accessible by other tasks.
 
 - SendActualDataEvent loop, this event gets the data from the Data acquiring
-    loop and publishes an event with the DBL and DBL Array data types. This
-    event is used in the windows only, to plot the values into graphs.
+  loop and publishes an event with the DBL and DBL Array data types. This
+  event is used in the windows only, to plot the values into graphs.
 
 ![Telemetry Logging task Process\label{figurefifteen7293ce79e1e4a1065905e07662a6e44b}](../Resources/figures/7293ce79e1e4a1065905e07662a6e44b.png)
 
@@ -720,17 +720,17 @@ is set to true. Here the loop is stopped.
 
 Here the available methods for this task are explained.
 
-#### TCP_Telemetry_Init 
+#### TCP_Telemetry_Init
 
 This VI is used to launch the process, to do so some inputs are required:
 
 - Telemetry Task Reference: here the reference to the telemetry task is given
-    to be able of reading the telemetry from inside the task.
+  to be able of reading the telemetry from inside the task.
 
 - Telemetry URL config file path in: Topic Telemetry configuration file.
 
 - HMIconfig XML File Path in: here the general configuration file
-    “*HMIConfig.xml*” must be given.
+  “*HMIConfig.xml*” must be given.
 
 ![Task method: TCP_Telemetry_Init\label{figuresixty-sixfaa4e9a776a49e7524458218e575eb42}](../Resources/figures/faa4e9a776a49e7524458218e575eb42.png)
 
@@ -748,13 +748,13 @@ ShowProcessWindow control value.
 
 ![Task method: ControlProcessWindow\label{figuresixty-eight42d6a3e3c5bc8c2b4adb6aa2d8bc87d7}](../Resources/figures/42d6a3e3c5bc8c2b4adb6aa2d8bc87d7.png)
 
-#### StartPublish 
+#### StartPublish
 
 This VI is used to start publishing data over TCP.
 
 ![Task method: StartPublish\label{figuresixty-ninecc4a2c2fa63eb088ad2a7e9c8a6d6123}](../Resources/figures/cc4a2c2fa63eb088ad2a7e9c8a6d6123.png)
 
-#### StopPublish 
+#### StopPublish
 
 This VI is used to start publishing data over TCP.
 

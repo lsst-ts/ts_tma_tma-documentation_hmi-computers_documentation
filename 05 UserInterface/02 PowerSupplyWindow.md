@@ -50,13 +50,13 @@ Within this part, all the indicators shown in Figure \ref{figureonehundredeighty
   - Red: fault.
 
 - Status: this indicator does the same as the LED, monitoring the subsystem’s
-    status by text.
+  status by text.
 
 - Current and DC voltage: those indicators, show the value of the current and
-    the voltage.
+  the voltage.
 
 - Graph. There are two buttons for stop updating values and for restart
-    updating them:
+  updating them:
 
   - Freeze graph: to stop the graph update.
 
@@ -67,40 +67,40 @@ Within this part, all the indicators shown in Figure \ref{figureonehundredeighty
 The control part is made up by three buttons:
 
 - On button. Asks the subsystem to power on. When this button is pressed, the
-    “On button” event is launched.
+  “On button” event is launched.
 
 - Off button. Asks the subsystem to power off. When this button is pressed,
-    the “Of button” event is launched.
+  the “Of button” event is launched.
 
 - Reset button. Asks the subsystem to reset. When this button is pressed, the
-    “Reset Alarm button” event is launched.
+  “Reset Alarm button” event is launched.
 
 #### Connector pane
 
 The required inputs for the VI are the following:
 
 - Stop panel user event in: this is an input that has the reference to the
-    event that stops the VI.
+  event that stops the VI.
 
 - VI Data: this input contains the following events’ references:
 
   - Sub Panel Window: reference to the subpanel where windows are loaded.
-        Not used in this window.
+    Not used in this window.
 
   - Home and Window Selection User Event: event used to send the window
-        selection to the menu from the loaded window. Not used in this window.
+    selection to the menu from the loaded window. Not used in this window.
 
   - Main VI Events: event to communicate information to the main VI, the
-        options available are: window name change, operation mode, alarm box and
-        exit. Not used in this window.
+    options available are: window name change, operation mode, alarm box and
+    exit. Not used in this window.
 
   - Disable Menu? Event: event used to hide the menu when a CMD is active.
-        used in SendDisableMenuEvent.vi at the InitSequence and EndSequence
-        cases of the Consumer Loop.
+    used in SendDisableMenuEvent.vi at the InitSequence and EndSequence
+    cases of the Consumer Loop.
 
   - HMIMain2Window Event: event to tell the actual window that the commander
-        has changed from the main to the actual window. Used at the
-        GetHMIMain2WindowEventRef.vi within LoopInitializationAction.vi.
+    has changed from the main to the actual window. Used at the
+    GetHMIMain2WindowEventRef.vi within LoopInitializationAction.vi.
 
 #### Block Diagram
 
@@ -115,10 +115,10 @@ the exit actions.
 Within the initialization:
 
 - ActivateDeactivateControls.vi: activates or deactivates front panel
-    controls.
+  controls.
 
 - Launch the event of the Update Graph control to ensure that the graph is
-    updated from the VI initialization.
+  updated from the VI initialization.
 
 - Hide ack progress bar.
 
@@ -131,30 +131,30 @@ This VI does the following, using InitGeneralHMIRefs.vi:
 - Each of the possible user events are registered:
 
   - Some of them are obtained from the TMA using
-        GetEVENTFromTMA.lvclass:GetEventRefs.vi (explained with more details in
-        the list of subVIs). Ack/Done/Error/Warning event out are registered, so
-        that they could be managed in the Main Event Loop, depending on the
-        response received from the TMA.
+    GetEVENTFromTMA.lvclass:GetEventRefs.vi (explained with more details in
+    the list of subVIs). Ack/Done/Error/Warning event out are registered, so
+    that they could be managed in the Main Event Loop, depending on the
+    response received from the TMA.
 
   - The reference of the HMIMain2Window event, to use it to communicate the
-        commander change from the Main VI to the deferent windows.
+    commander change from the Main VI to the deferent windows.
 
   - Stop panel user event, to stop the window manually.
 
   - An error event is created using CreateErrorEvent.vi, creating the error
-        event used to send the event from the consumer loop to the main loop.
+    event used to send the event from the consumer loop to the main loop.
 
   - GetHMIMain2WindowEventRef.vi returns the reference of the HMIMain2Window
-        event to use it to communicate information from the Main VI to the
-        different windows.
+    event to use it to communicate information from the Main VI to the
+    different windows.
 
 - Also, a buffer is initialized and registered, to use it at the Update Graph
-    Loop.
+  Loop.
 
 - URLs for telemetry are registered, as well.
 
 - Done/Ack Sync Queue is registered, to use it to synchronize the ack and done
-    events with the TMA.
+  events with the TMA.
 
 - Publish the local STO to false, has this system has no specific STO.
 
@@ -163,7 +163,7 @@ This VI does the following, using InitGeneralHMIRefs.vi:
   - Consumer Loop Queue
 
   - Initialized References (Buffer object, Done/Ack Sync Queue, URL data and
-        Event Registration Ref)
+    Event Registration Ref)
 
 ![LoopInitializationActions.vi\label{figureonehundredeighty-eight838e90d9f56cdf264d3332c91c53bb96}](../Resources/figures/838e90d9f56cdf264d3332c91c53bb96.png)
 
@@ -173,7 +173,7 @@ At the exit part, the errors from different loops are appended. In the
 HMIExitActions VI following actions are executed:
 
 - The Destroy Error Event VI destroys the error event used to send the error
-    from the consumer loop to the main loop.
+  from the consumer loop to the main loop.
 
 - Deregister the telemetry data for the HHD.
 
@@ -338,7 +338,7 @@ It receives the event reference coming from the main, and depending on it does
 the following:
 
 - Update Commander: it updates the visibility and the enabling of the controls
-    depending on the mode of operation and the device used.
+  depending on the mode of operation and the device used.
 
 - Default: it does nothing.
 
@@ -431,7 +431,7 @@ available.
 The case structure from the loop has two possible cases:
 
 - If the waveform array is not empty and the local variable update graph is
-    true:
+  true:
 
   - The graph time is change to relative time ToRelativeTime.vi.
 
@@ -446,7 +446,7 @@ The case structure from the loop has two possible cases:
 #### List of SubVIs
 
 - Activatedeactivatecontrols.vi: This manages the control cover, to do so it
-    checks the following global variables:
+  checks the following global variables:
 
   - GBL_UserGroups
 
@@ -457,7 +457,7 @@ The case structure from the loop has two possible cases:
 ![Activatedeactivatecontrols.vi context help.\label{figuretwohundredthirteenc72b36307540c94a17fb6f977cb73c59}](../Resources/figures/c72b36307540c94a17fb6f977cb73c59.png)
 
 - Buffer.lvclass:InsertSampleAndGetBuffer.vi: Insert sample in the buffer and
-    get last desired elements of the buffer
+  get last desired elements of the buffer
 
 ![Buffer.lvclass:InsertSampleAndGetBuffer.vi icon.\label{figuretwohundredfourteenthousandonehundredeighty-six3b6d59b599b0aa9d048769e15f09952c}](../Resources/figures/3b6d59b599b0aa9d048769e15f09952c.png)
 
@@ -470,24 +470,24 @@ The case structure from the loop has two possible cases:
 ![CppAppCommand.lvclass:SendPowerCMD.vi context help.\label{figuretwohundredsixteen0a909c59c4c56dcc3466abad24cfc008}](../Resources/figures/0a909c59c4c56dcc3466abad24cfc008.png)
 
 - EndSequence.vi: It disables the possibility of pushing buttons sending the
-    event disable menu. Buttons are greyed out and the ack progress bar is made
-    invisible.
+  event disable menu. Buttons are greyed out and the ack progress bar is made
+  invisible.
 
 ![EndSequence.vi context help.\label{figuretwohundredseventeen62c92f012ded37f8a790de438c746070}](../Resources/figures/62c92f012ded37f8a790de438c746070.png)
 
 - FilterSource.vi: The source will be filtered to get the command family
-    number if it exist. If the number does not exist the source will be
-    transmitted as it comes.
+  number if it exist. If the number does not exist the source will be
+  transmitted as it comes.
 
 ![FilterSource.vi context help.\label{figuretwohundredeighteen32ab4a1b4976ab16bd868659ef08bcb2}](../Resources/figures/32ab4a1b4976ab16bd868659ef08bcb2.png)
 
 - GenerateErrorEvent.vi: Generates the error event when an error occurs at the
-    consumer loop of the HMI windows
+  consumer loop of the HMI windows
 
 ![GenerateErrorEvent.vi context help.\label{figuretwohundrednineteendd205ae467e5e356badd5b2a48958b6a}](../Resources/figures/dd205ae467e5e356badd5b2a48958b6a.png)
 
 - GetLastStateChartState.vi: This vi takes the last state from the status
-    string.
+  string.
 
 ![GetLastStateChartState.vi context help.\label{figuretwohundredfortyd667bde7952d593c6b95209d5782c6cc}](../Resources/figures/d667bde7952d593c6b95209d5782c6cc.png)
 
@@ -496,8 +496,8 @@ The case structure from the loop has two possible cases:
 ![GetTelemetryForWindow.vi context help.\label{figuretwohundredforty-one7b12af820984539ff93da07b4cc1e8cc}](../Resources/figures/7b12af820984539ff93da07b4cc1e8cc.png)
 
 - GraphUpdateLoopErrorHandling.vi: Graph update while loop error handling,
-    this VI is makes the required actions to manage the errors in the graph
-    update loop.
+  this VI is makes the required actions to manage the errors in the graph
+  update loop.
 
 ![GraphUpdateLoopErrorHandling.vi context help.\label{figuretwohundredforty-two4754ca1ec1893a03a2c64d7704bf8d37}](../Resources/figures/4754ca1ec1893a03a2c64d7704bf8d37.png)
 
@@ -510,17 +510,17 @@ The case structure from the loop has two possible cases:
 ![HMIExitActions.vi context help.\label{figuretwohundredforty-threefa06b6a7cbd051d44bae6f08eeede080}](../Resources/figures/fa06b6a7cbd051d44bae6f08eeede080.png)
 
 - HMITimeoutChoice.vi: Define the timeout for refreshing the HMI depending on
-    the current device GBL
+  the current device GBL
 
 ![HMITimeoutChoice.vi context help.\label{figuretwohundredforty-fourc37aa9a19a92493d676519fa9d27bdb8}](../Resources/figures/c37aa9a19a92493d676519fa9d27bdb8.png)
 
 - InitSequence.vi: It disables the possibility of pushing buttons sending the
-    event disable menu. Buttons are greyed out.
+  event disable menu. Buttons are greyed out.
 
 ![InitSequence.vi context help.\label{figuretwohundredforty-fivef99cad48d796825cf3e97374839b73da}](../Resources/figures/f99cad48d796825cf3e97374839b73da.png)
 
 - LoopInitializationActions.vi: Here the initialization actions for the
-    PowerSupply window are executed. The actions are:
+  PowerSupply window are executed. The actions are:
 
   - Get the telemetrry URLs for this window.
 
@@ -531,10 +531,10 @@ The case structure from the loop has two possible cases:
   - Register events for the window
 
   - Ack Event: This one is taken from the
-        GetEVENTFromTMA.lvclass:GetEventRefs. - Done Event: This one is taken
-        from the GetEVENTFromTMA.lvclass:GetEventRefs. - Error Event: This one
-        is taken from the GetEVENTFromTMA.lvclass:GetEventRefs. - Warning Event:
-        This one is taken from the GetEVENTFromTMA.lvclass:GetEventRefs.
+    GetEVENTFromTMA.lvclass:GetEventRefs. - Done Event: This one is taken
+    from the GetEVENTFromTMA.lvclass:GetEventRefs. - Error Event: This one
+    is taken from the GetEVENTFromTMA.lvclass:GetEventRefs. - Warning Event:
+    This one is taken from the GetEVENTFromTMA.lvclass:GetEventRefs.
 
   - Consumer Loop Error Event: This one is created here and then registered.
 
@@ -543,7 +543,7 @@ The case structure from the loop has two possible cases:
 ![LoopInitializationActions.vi context help.\label{figuretwohundredforty-sixdc86ba28673df8370ebc9fac6a50b428}](../Resources/figures/dc86ba28673df8370ebc9fac6a50b428.png)
 
 - MPSSecuences.lvlib:ForceTerminateSequence.vi: Forces to end the sequence.
-    Error in the input is only transmitted to the output.
+  Error in the input is only transmitted to the output.
 
 ![MPSSecuences.lvlib:ForceTerminateSequence.vi context help.\label{figuretwohundredforty-seven50e9056ae8808b66f439fe18a7cf09ca}](../Resources/figures/50e9056ae8808b66f439fe18a7cf09ca.png)
 
@@ -556,50 +556,50 @@ The case structure from the loop has two possible cases:
 ![MPSSecuences.lvlib:NoAckOperations.vi context help.\label{figuretwohundredforty-eight16e91ff8f5f6a57170bc7a81bbcce4a9}](../Resources/figures/16e91ff8f5f6a57170bc7a81bbcce4a9.png)
 
 - MPSSecuences.lvlib:OffSecuenceEnqueue.vi: Enqueues the sequences needed to
-    turn off the system..
+  turn off the system..
 
 ![MPSSecuences.lvlib:OffSecuenceEnqueue.vi context help.\label{figuretwohundredforty-nine03231b3c5ae2a0586f8611cd74def969}](../Resources/figures/03231b3c5ae2a0586f8611cd74def969.png)
 
 - MPSSecuences.lvlib:OnSecuenceEnqueue.vi: Enqueues the sequences needed to
-    turn on the system..
+  turn on the system..
 
 ![MPSSecuences.lvlib:OnSecuenceEnqueue.vi context help.\label{figuretwohundredfifty6f9d86e6324b9ac3fb857a07c2a57ec1}](../Resources/figures/6f9d86e6324b9ac3fb857a07c2a57ec1.png)
 
 - MPSSecuences.lvlib:ResetSecuenceEnqueue.vi: : Enqueues the sequences needed
-    to reset the system.
+  to reset the system.
 
 ![MPSSecuences.lvlib:ResetSecuenceEnqueue.vi context help.\label{figuretwohundredfifty-one2c11f35c54ea7625e125a5d8d08cbc24}](../Resources/figures/2c11f35c54ea7625e125a5d8d08cbc24.png)
 
 - MPSSecuences.lvlib:StopVISecuenceEnqueue.vi: : Enqueues the sequences needed
-    to stop the VI.
+  to stop the VI.
 
 ![MPSSecuences.lvlib:StopVISecuenceEnqueue.vi context help.\label{figuretwohundredfifty-twod002a2d3e2880efd088e151117cb9fad}](../Resources/figures/d002a2d3e2880efd088e151117cb9fad.png)
 
 - PanelErrorHandling.vi: Display the error using a "Simple error handler" if
-    the error is new.
+  the error is new.
 
 ![PanelErrorHandling.vi context help.\label{figuretwohundredfifty-three4b29ad24388a2d754fb0c08366b05a40}](../Resources/figures/4b29ad24388a2d754fb0c08366b05a40.png)
 
 - ProgressVarUpdate.vi: This VI makes the progress var keep restarting it self
-    for ever.
+  for ever.
 
 ![ProgressVarUpdate.vi context help.\label{figuretwohundredfifty-foure45d6f7e8a47e6f6a4ab82c6688b6ab4}](../Resources/figures/e45d6f7e8a47e6f6a4ab82c6688b6ab4.png)
 
 - StringStatus2ColorBoxStatus.vi: Gets the color for the status indicator from
-    the status string. The status and arrive with substates (case insetive) This
-    will put a green color in the output if the status starts with a "On" word
-    This will put a red color if "Fault" or "alarm" is the status string or if
-    starts with "internal errors" Warning is not implemented yet
+  the status string. The status and arrive with substates (case insetive) This
+  will put a green color in the output if the status starts with a "On" word
+  This will put a red color if "Fault" or "alarm" is the status string or if
+  starts with "internal errors" Warning is not implemented yet
 
 ![StringStatus2ColorBoxStatus.vi context help.\label{figuretwohundredfifty-fivebf82482babf8ed2a822c35877ffd1f55}](../Resources/figures/bf82482babf8ed2a822c35877ffd1f55.png)
 
 - TimeDataBuffer.lvclass:InsertSampleAndGetBufferTimeData.vi: Insert sample in
-    the buffer and get last desired elements of the buffer
+  the buffer and get last desired elements of the buffer
 
 ![TimeDataBuffer.lvclass:InsertSampleAndGetBufferTimeData.vi contexthelp.\label{figuretwohundredfifty-six07bc00655076c3659d0461ffd30c734b}](../Resources/figures/07bc00655076c3659d0461ffd30c734b.png)
 
 - TMAOMT_ErrorDialog.vi: Shows a pop up window when an error occurs at the TMA
-    Management Operation task
+  Management Operation task
 
 ![TMAOMT_ErrorDialog.vi context help.\label{figuretwohundredfifty-sevenbd564dac0c12d28e4d47bc632f24b340}](../Resources/figures/bd564dac0c12d28e4d47bc632f24b340.png)
 
@@ -608,21 +608,21 @@ The case structure from the loop has two possible cases:
 ![ToRelativeTime.vi context help.\label{figuretwohundredfifty-eight31a1b886e8826a1ca283e8fe3af6048c}](../Resources/figures/31a1b886e8826a1ca283e8fe3af6048c.png)
 
 - UpdateGraphPlotNames.vi: Update legend names using the variable names. The
-    legend row number is changed according to the number of waveforms
+  legend row number is changed according to the number of waveforms
 
 ![UpdateGraphPlotNames.vi context help.\label{figuretwohundredfifty-nine5469c31b487fb41db1b74b1296b9de8c}](../Resources/figures/5469c31b487fb41db1b74b1296b9de8c.png)
 
 - UpdateHMIWaveformFromDBLArrayVariables.vi: Generates the waveform to display
-    by the HMI
+  by the HMI
 
 ![UpdateHMIWaveformFromDBLArrayVariables.vi context help.\label{figuretwohundredsixty7a7aa13444b98408bef57ddcf72e7574}](../Resources/figures/7a7aa13444b98408bef57ddcf72e7574.png)
 
 - WaitForAck.vi: Sets timeout with a fixed time of 2500 ms as it should
-    respond very fast.
+  respond very fast.
 
 ![WaitForAck.vi context help.\label{figuretwohundredsixty-one269c21999087c54579bf4b5d2d1ad83c}](../Resources/figures/269c21999087c54579bf4b5d2d1ad83c.png)
 
 - WaitForDone.vi: Add 2500ms to received timeout. The TMA OMT will add 2000 ms
-    to the received timeout so this 500 ms more.
+  to the received timeout so this 500 ms more.
 
 ![WaitForDone.vi context help.\label{figuretwohundredsixty-twoaad243c441b5ba389330ce8dd2d4633a}](../Resources/figures/aad243c441b5ba389330ce8dd2d4633a.png)

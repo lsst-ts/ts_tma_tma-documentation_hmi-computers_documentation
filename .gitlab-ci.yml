@@ -37,5 +37,5 @@ release:
   script:
     - >
       release-cli create --name $CI_COMMIT_TAG
-      --assets-link '{"name":"LSST_HMI_SoftwareDocumentation","url":"https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/hmicomputers_documentation/-/jobs/artifacts/'$CI_COMMIT_SHA'/raw/LSST_HMI_SoftwareDocumentation.pdf?job=tag_generate"}'
+      --assets-link '{"name":"LSST_HMI_SoftwareDocumentation.pdf","url":"https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/hmicomputers_documentation/-/jobs/artifacts/'$CI_COMMIT_SHA'/raw/LSST_HMI_SoftwareDocumentation.pdf?job=tag_generate"}'
 
