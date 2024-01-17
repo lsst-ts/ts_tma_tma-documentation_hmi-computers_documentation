@@ -79,4 +79,3 @@ Global variable used for globally having the information used for main axes trac
 Path: HMIComputers\HMI\Subsystem\MainAxis\SecuencesSubVIs\GBL_TrackingData.vi
 
 VI callers: Main Axis General View_EUI.vi; PopUpMainAxisLoadTrack_EUI.vi; MainAxesSequences.lvlib:ReadTrackingFile.vi; MainAxesInitTrackActions.vi
-
