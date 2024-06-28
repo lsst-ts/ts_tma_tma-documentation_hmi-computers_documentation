@@ -2,7 +2,7 @@
 
 This document explains the structure for the Human Machine Interface (HMI)
 software located in the HMIComputers repository,
-[here](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers).
+[here](https://github.com/lsst-ts/ts_tma_labview_hmi-computers).
 The purpose of this documentation is to explain the architecture design of the
 HMI system. To do so, the main components of the HMI code are explained. The
 develop tools and tips are also included as part of the documentation.
