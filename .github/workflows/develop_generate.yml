@@ -26,8 +26,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
         with: 
-          name: LSST_HMI_SoftwareDocumentation.pdf
-          path: LSST_HMI_SoftwareDocumentation.pdf
+          name: generate_pdf
+          path: generate_pdf
 
       # Runs a single command using the runners shell
       - name: Generate PDF
