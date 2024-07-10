@@ -32,7 +32,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Generate PDF
         run: |
-          ls -la
+          ./generate_pdf $GITHUB_SHA
 
 
 
