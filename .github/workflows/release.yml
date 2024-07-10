@@ -1,4 +1,4 @@
-name: Releases
+name: create_release
 
 on: 
   push:
