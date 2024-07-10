@@ -32,5 +32,6 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: PDF
+          name: LSST_HMI_SoftwareDocumentation.pdf
           path: LSST_HMI_SoftwareDocumentation.pdf
+          compression-level: 0 # no compression
