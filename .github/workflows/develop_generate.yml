@@ -28,10 +28,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Generate PDF
-        run: |
-          ls -l
+        run: sudo ./generate_pdf $GITHUB_SHA
 
       - uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: Mitgliedsantrag.pdf
+          path: LSST_HMI_SoftwareDocumentation.pdf
