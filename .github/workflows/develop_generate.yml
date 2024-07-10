@@ -32,7 +32,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Generate PDF
         run: |
-          git update-index --chmod=+x .\generate_pdf
+          git update-index --chmod=+x ./generate_pdf
           ./generate_pdf $GITHUB_SHA
 
 
