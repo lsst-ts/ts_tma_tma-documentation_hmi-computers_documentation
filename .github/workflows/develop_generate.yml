@@ -34,3 +34,4 @@ jobs:
         with:
           name: LSST_HMI_SoftwareDocumentation
           path: LSST_HMI_SoftwareDocumentation.pdf
+          retention-days: 5
