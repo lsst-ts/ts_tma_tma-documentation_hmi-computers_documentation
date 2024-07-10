@@ -30,3 +30,8 @@ jobs:
       - name: Generate PDF
         run: |
           ls -l
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: Mitgliedsantrag.pdf
