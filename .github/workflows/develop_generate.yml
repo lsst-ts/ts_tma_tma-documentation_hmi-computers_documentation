@@ -31,7 +31,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Generate PDF
-        run: ls -lah
+        run: cat ./generate_pdf
 
 
       # Runs a set of commands using the runners shell
