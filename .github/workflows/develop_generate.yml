@@ -30,7 +30,7 @@ jobs:
       - name: Generate PDF
         run: sh ./generate_pdf $GITHUB_SHA
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: LSST_HMI_SoftwareDocumentation
           path: LSST_HMI_SoftwareDocumentation.pdf
