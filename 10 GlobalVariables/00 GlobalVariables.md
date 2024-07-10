@@ -4,7 +4,7 @@
 
 Global variable for storing the ambient temperature value globally.
 
-Path: `HMIComputers\\AmbientTemperatureUpdate\\GBL_AmbientTemperature.vi`
+Path: HMIComputers\\AmbientTemperatureUpdate\\GBL_AmbientTemperature.vi
 
 VI callers (reader):
 
@@ -18,7 +18,7 @@ VI callers (writer):
 
 Global variable used for globally having the information if the ATS is on or not.
 
-Path: HMIComputers\AutomaticTesting\AutomaticTestingReceiver_class\GBL_ATSmodeOn.vi
+Path: HMIComputers\\AutomaticTesting\\AutomaticTestingReceiver_class\\GBL_ATSmodeOn.vi
 
 VI callers (reader):
 
@@ -35,7 +35,7 @@ VI callers (writer):
 
 Global variable used for globally having the actual commander.
 
-Path: HMIComputers\HMI\GeneralHMIControls\GBL_Commander.vi
+Path: HMIComputers\\HMI\\GeneralHMIControls\\GBL_Commander.vi
 
 VI callers (reader):
 
@@ -54,7 +54,7 @@ VI callers (writer):
 
 Global variable used for globally having the current device where the application is running, EUI or HHD.
 
-Path: HMIComputers\HMI\GeneralHMIControls\GBL_CurrentDevice.vi
+Path: HMIComputers\\HMI\\GeneralHMIControls\\GBL_CurrentDevice.vi
 
 VI callers (reader):
 
@@ -97,7 +97,7 @@ VI callers (writer):
 
 Global variable used for globally having the information of the STO from the loaded window, this is then displayed in the main window in the safety section in the top left part of the window.
 
-Path: HMIComputers\HMI\GeneralHMISubVIs\GBL_SystemSTO.vi
+Path: HMIComputers\\HMI\\GeneralHMISubVIs\\GBL_SystemSTO.vi
 
 VI callers (reader):
 
@@ -112,7 +112,7 @@ VI callers (writer):
 
 Global variable used for globally having the interlock information of the active window, to manage the interlock display in the windows that have it.
 
-Path: HMIComputers\HMI\GeneralHMISubVIs\GBL_ActiveInterlocks.vi
+Path: HMIComputers\\HMI\\GeneralHMISubVIs\\GBL_ActiveInterlocks.vi
 
 VI callers (reader):
 
@@ -126,7 +126,7 @@ VI callers (writer):
 
 Global variable used for globally having the information used for CCW tracking commands when done from the EUI/HHD, this option is just for simple testing.
 
-Path: HMIComputers\HMI\Subsystem\Camera Cable Wrap\SecuencesSubVIs\GBL_TrackingData.vi
+Path: HMIComputers\\HMI\\Subsystem\\Camera Cable Wrap\\SecuencesSubVIs\\GBL_TrackingData.vi
 
 VI callers (reader):
 
@@ -143,7 +143,7 @@ VI callers (writer):
 
 Global variable used for globally having the information of the current users group, to enable or disable certain features within the application.
 
-Path: HMIComputers\HMI\Subsystem\Log In\GBL_UserGourps.vi
+Path: HMIComputers\\HMI\\Subsystem\\Log In\\GBL_UserGourps.vi
 
 VI callers (reader):
 
@@ -163,7 +163,7 @@ VI callers (writer):
 
 Global variable used for stopping the grey panel loaded when a pop up window is shown.
 
-Path: HMIComputers\HMI\Subsystem\MainAxis\PopUp\GBL_PopUpGreyStop.vi
+Path: HMIComputers\\HMI\\Subsystem\\MainAxis\\PopUp\\GBL_PopUpGreyStop.vi
 
 VI callers (reader):
 
@@ -180,7 +180,7 @@ VI callers (writer):
 
 Global variable used for globally having the information used for main axes tracking commands when done from the EUI/HHD, this option is just for simple testing.
 
-Path: HMIComputers\HMI\Subsystem\MainAxis\SecuencesSubVIs\GBL_TrackingData.vi
+Path: HMIComputers\\HMI\\Subsystem\\MainAxis\\SecuencesSubVIs\\GBL_TrackingData.vi
 
 VI callers (reader):
 
