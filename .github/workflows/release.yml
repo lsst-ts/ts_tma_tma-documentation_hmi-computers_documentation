@@ -1,0 +1,30 @@
+name: Releases
+
+on: 
+  push:
+    tags:
+    - '*'
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    container: bsantamaria/pandoc-extended
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Generate PDF
+        run: sh ./generate_pdf $GITHUB_REF_NAME
+
+      # Create release and add artifacts https://github.com/ncipollo/release-action
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: LSST_HMI_SoftwareDocumentation.pdf
+          body: This repo contains the documentation for the [HMIComputers repo](https://github.com/lsst-ts/ts_tma_labview_hmi-computers).
