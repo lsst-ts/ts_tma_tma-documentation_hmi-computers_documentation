@@ -4,7 +4,7 @@
 
 Global variable for storing the ambient temperature value globally.
 
-Path: HMIComputers\AmbientTemperatureUpdate\GBL_AmbientTemperature.vi
+Path: `HMIComputers\AmbientTemperatureUpdate\GBL_AmbientTemperature.vi`
 
 VI callers (reader):
 
