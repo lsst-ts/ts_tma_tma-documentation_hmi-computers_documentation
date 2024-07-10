@@ -28,7 +28,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Generate PDF
-        run: sudo ./generate_pdf $GITHUB_SHA
+        run: ./generate_pdf $GITHUB_SHA
 
       - uses: actions/upload-artifact@v3
         with:
