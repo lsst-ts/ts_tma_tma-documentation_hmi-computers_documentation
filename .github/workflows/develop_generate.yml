@@ -25,13 +25,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-        with:
-          name: generate_pdf
-          path: generate_pdf
 
       # Runs a single command using the runners shell
       - name: Generate PDF
-        run: ./generate_pdf/generate_pdf $GITHUB_SHA
+        run: |
+          ls -laR
+          ./generate_pdf $GITHUB_SHA
 
 
       # Runs a set of commands using the runners shell
