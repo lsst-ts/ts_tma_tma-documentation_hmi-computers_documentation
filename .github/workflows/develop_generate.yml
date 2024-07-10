@@ -31,7 +31,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Generate PDF
-        run: ./generate_pdf $CI_COMMIT_SHORT_SHA
+        run: |
+          ls -la
+          ./generate_pdf $CI_COMMIT_SHORT_SHA
         
 
       # Runs a set of commands using the runners shell
