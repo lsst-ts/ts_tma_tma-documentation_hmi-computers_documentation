@@ -1,34 +1,38 @@
 # HMI Structure
 
 The Human Machine Interface (HMI) is an important part of the overall system, as
-seen in Figure \ref{figureone350f30df820b4ef01f38b7cadcba9985} where the HMI code corresponds to the EUI (Engineering User
+seen in Figure 1 below where the HMI code corresponds to the EUI (Engineering User
 Interface) and the HHD (Handheld Device) labels. It contains important code that
 makes the system work properly, as well as allowing advanced users to adjust the
 system or execute maintenance operations.
 
-![Communications structure between the different components of the MainControl System (MCS)\label{figureone350f30df820b4ef01f38b7cadcba9985}](../Resources/figures/350f30df820b4ef01f38b7cadcba9985.png)
+![Communications structure](../Resources/figures/350f30df820b4ef01f38b7cadcba9985.png)
+
+Figure 1: Communications structure between the different components of the MainControl System (MCS)
 
 Abbreviations from picture:
 
 - TCS: Telescope Control System
-- EFD:
+- EFD: Engineering Facility Database
 - CSC: Commandable Sal Component
-- HHD: Hand Held Device
+- HHD: Handheld Device
 - TMA: Telescope Mount Assembly
 - OMT: Operation Manager Task
 - EUI: Engineering User Interface
 - NSV: Network Shared Variable
 - TCP_TEK: Custom Tekniker TCP protocol
 
-Focusing only in the HMI part, the Figure \ref{figureone350f30df820b4ef01f38b7cadcba9985} simplifies to the Figure \ref{figuretwo3d62584b986c8ac035e591e474694ccc}, having
+Focusing only in the HMI part, the Figure 1 simplifies to the Figure 2, having
 the components of the HMI divided and the relation between the different
-elements explained. Al the components inside the HMI Components box are coded in
+elements explained. All the components inside the HMI Components box are coded in
 LabVIEW and compiled together as the EUI, for both the HHD and the MCC, with
 some variations as the screen size is different for each case.
 
-![Software structure, with detail in the HMI components\label{figuretwo3d62584b986c8ac035e591e474694ccc}](../Resources/figures/3d62584b986c8ac035e591e474694ccc.png)
+![Software structure](../Resources/figures/3d62584b986c8ac035e591e474694ccc.png)
 
-As shown in Figure \ref{figuretwo3d62584b986c8ac035e591e474694ccc}, the components of the HMI are:
+Figure 2: Software structure, with detail in the HMI components.
+
+As shown in Figure 2, the components of the HMI are:
 
 - TCP Client: this component is the one that connects to the TMA over TCP to
  send and receive the TCP messages. The message to send is specified to the

@@ -13,7 +13,7 @@ depending on the configuration set to it.
 
 ### Component Configuration
 
-As explained in [this section](#configuration-file-explained) the Sender.lvclass requires a *\*.xml* file to
+As explained in [this section](#configuration-file-explained) the Sender.lvclass requires a **\*.xml** file to
 specify the configuration of the task. For this specific case, the used
 configuration is specified in the “*HMIConfig.xml*” file located at the
 Configuration folder inside the HMIComputers repo. In this file there is a
