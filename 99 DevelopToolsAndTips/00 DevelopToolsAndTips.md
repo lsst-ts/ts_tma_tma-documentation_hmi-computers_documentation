@@ -32,13 +32,13 @@ When adding a new window to the HMI, follow these steps:
 
     ![EUI disable](../Resources/figures/eui_window_disable.png)
 
-    c. Once the necessary initialization for the VI has been performed, when registering the events to which the event system will respond, the **ACK**, **DONE**, **ERROR**, and **WARNIG** events must be added. To do this, use the VI: **GetEventRefs.vi**.
+    c. Once the necessary initialization for the VI has been performed, when registering the events to which the event system will respond, the **ACK**, **DONE**, **STOP** (make the window stop when requested), **ERROR**, and **WARNIG** events must be added. To do this, use the VI: **GetEventRefs.vi**.
 
     ![EUI event](../Resources/figures/eui_window_event.png)
 
     d. Once this is done, the initialization is complete, and all that remains is to place the **while** loop with the event system and the events necessary for the window to function. It is possible to require more than one **while** loop to perform sequences or data acquisition; the best option is to find a screen that has one integrated and see how it is done to obtain a similar solution.
 
-    e. Finally, the window cleanup is complete, where the created references will be closed and where we will ensure that the tabs and scroll bars are left in the correct position for the next execution. It is important to place the following VI at the end of the window's error line, called: **WriteExitHMIError.vi**.
+    e. Finally, the window cleanup is complete, where the created references will be closed and where we will ensure that the tabs and scroll bars are left in the correct position for the next execution. It is important to place the following VI at the end of the window's error line, called: **WriteExitHMIError.vi**, which is important to report any errors while closing the window.
 
     ![EUI close](../Resources/figures/eui_window_close.png)
 

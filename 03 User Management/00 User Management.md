@@ -25,7 +25,7 @@ As mentioned above, it reads the configuration file generated in step 1.
 
         iii. Once filled out, click Log In. If either of the two fields is incorrect, a pop-up window will appear warning the user that either the user name or password is incorrect.
   
-    b. Once this is done, the user is inside the app and can navigate and do whatever they want. However, access must be limited in the relevant windows based on user level.
+    b. Once this is done, the user is inside the app and can navigate and do whatever they want. However, access must be limited in the relevant windows based on [user level](https://ts-tma.lsst.io/docs/tma_eui-manual-english/01_DescriptionOfScreens/00_Preliminary_Considerations.html#users).
 
     c. If you click the "Sign In as a different user" button from the home window, the password and sign-in controls will be disabled, allowing you to log out only. This means that the current user's name will appear in the user field, and only the sign-out button will be enabled.
   
