@@ -33,6 +33,11 @@ jobs:
             texlive-latex-recommended \
             texlive-latex-extra
 
+      - name: Check Pandoc/LaTeX versions
+        run: |
+          pandoc --version
+          pdflatex --version
+
       # Runs a single command using the runners shell
       - name: Generate PDF
         run: ./generate_pdf $GITHUB_SHA
