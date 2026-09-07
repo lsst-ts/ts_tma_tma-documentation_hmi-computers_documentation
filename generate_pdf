@@ -6,4 +6,4 @@ echo "Generating PDF for version $VERSION"
 
 sed -r -i "s/^(\s*footer-center:\s*').*(')/\1$VERSION\2/g" config.yaml
 sed -r -i "s/^(\s*subtitle:\s*').*(')/\1$VERSION\2/g" config.yaml
-pandoc -d config.yaml */*.md -M date="$(date "+%d-%m-%Y")" --verbose
+pandoc -d config.yaml */*.md -M date="$(date "+%d-%m-%Y")"
