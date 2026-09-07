@@ -21,7 +21,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Generate PDF
-        run: sh ./generate_pdf $GITHUB_REF_NAME
+        run: ./generate_pdf $GITHUB_REF_NAME
 
       # Create release and add artifacts https://github.com/ncipollo/release-action
       - uses: ncipollo/release-action@v1

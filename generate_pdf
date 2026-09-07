@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 VERSION=$(echo $1 | sed -r 's/\//\\\//g')
 VERSION=${VERSION//_/ }
 echo "Generating PDF for version $VERSION"
